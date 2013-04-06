@@ -1,11 +1,13 @@
 package com.origwood.liuxue;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.origwood.liuxue.ui.Base;
+import com.origwood.liuxue.ui.Login;
 
 /**
  * 应用入口
@@ -13,22 +15,47 @@ import com.origwood.liuxue.ui.Base;
  * @author wanggang
  * @date： 2013-3-31 email: 315331371@qq.com
  */
-public class AppStart extends Base {
+public class AppStart extends Base implements OnClickListener {
+	private Button btnQQ, btnSina, btnRenRen, btnLogin, btnRegister;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
+		btnQQ = (Button) findViewById(R.id.qq);
+		btnSina = (Button) findViewById(R.id.sina);
+		btnRenRen = (Button) findViewById(R.id.renren);
+		btnLogin = (Button) findViewById(R.id.login);
+		btnRegister = (Button) findViewById(R.id.register);
+		btnQQ.setOnClickListener(this);
+		btnSina.setOnClickListener(this);
+		btnRenRen.setOnClickListener(this);
+		btnLogin.setOnClickListener(this);
+		btnRegister.setOnClickListener(this);
+
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, 0, 0, R.string.menu_settings)
-				.setActionView(new Button(this))
-				.setShowAsAction(
-						MenuItem.SHOW_AS_ACTION_IF_ROOM
-								| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.qq:
 
-		return true;
+			break;
+		case R.id.sina:
+
+			break;
+		case R.id.renren:
+
+			break;
+		case R.id.login:
+			startActivity(new Intent(this, Login.class));
+			break;
+		case R.id.register:
+
+			break;
+		default:
+			break;
+		}
+
 	}
 }

@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    
+    android:background="@color/write_light"
+    android:paddingTop="5dp"
+    android:paddingLeft="5dp"
+     >
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world"
+        android:src="@drawable/material_group_icon"
+        android:background="@null"
+        android:id="@+id/icon"
+        android:layout_marginRight="5dp"
+        
+      android:contentDescription="TODO"/>
+
+    	<LinearLayout 
+    	     android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    	    android:layout_weight="1"
+    	    android:orientation="vertical"
+    	    >
+    	    
+    	     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="最新发表帖子的标题"
+        />
+    	     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="法国留学帮"
+        android:textColor="@color/grey_light"
+        />
+    	     <LinearLayout 
+    	         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    	         
+    	         >
+    	         <ImageView 
+    	             android:src="@drawable/ic_people"
+    	              android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    	             />
+    	         <TextView 
+    	               android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12321"
+          android:textColor="@color/grey_light"
+    	             />
+    	             />
+    	         
+    	     </LinearLayout>
+    	</LinearLayout>
+   <Button 
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:background="@drawable/material_group_join"
+       android:layout_gravity="bottom"
+       />
+    
+
+</LinearLayout>

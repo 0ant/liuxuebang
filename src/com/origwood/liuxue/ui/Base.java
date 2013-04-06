@@ -1,15 +1,16 @@
 package com.origwood.liuxue.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-import com.actionbarsherlock.R;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
+import com.origwood.liuxue.R;
 
-public class Base extends SherlockActivity {
+public class Base extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_Sherlock_Light);
+		setTheme(android.R.style.Theme_NoTitleBar);
 		super.onCreate(savedInstanceState);
 
 	}
@@ -18,7 +19,16 @@ public class Base extends SherlockActivity {
 	protected void onStart() {
 
 		super.onStart();
-		ActionBar actionBar = this.getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		if (findViewById(R.id.back) != null) {
+			View view = findViewById(R.id.back);
+			view.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					finish();
+
+				}
+			});
+		}
 	}
 }

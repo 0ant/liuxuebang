@@ -1,10 +1,120 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="@drawable/bg_start"
-    >
+    android:layout_height="match_parent"
+    android:background="@drawable/background_start"
+    android:orientation="vertical" >
 
-  
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+         android:paddingRight="20dp"
+        android:paddingTop="100dp" >
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/layout_login_way"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="合作账号登陆"
+            android:textColor="@color/black_light" />
+
+        <View
+            style="@style/Widght.Liuxue.Divide"
+            android:layout_width="match_parent"
+            
+            android:layout_height="0.5dp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+             >
+
+            <TableRow >
+
+                <Button
+                    android:id="@+id/qq"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_qq" 
+                    
+                    />
+
+                <Button
+                    android:id="@+id/sina"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                  
+                    android:background="@drawable/ic_sina" />
+
+                <Button
+                    android:id="@+id/renren"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                   
+                    android:background="@drawable/ic_renren" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QQ"
+                    android:textColor="@color/black_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="新浪"
+                    android:textColor="@color/black_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人人网"
+                    android:textColor="@color/black_light" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="使用留学帮账号"
+            android:textColor="@color/black_light" />
+
+        <View
+            style="@style/Widght.Liuxue.Divide"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/login"
+                style="@style/Widget.Liuxue.Button.Green"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="登陆" />
+
+            <Button
+                android:id="@+id/register"
+                style="@style/Widget.Liuxue.Button.Blue"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="注册" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

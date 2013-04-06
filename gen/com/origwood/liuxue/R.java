@@ -206,39 +206,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int divider=0x7f010005;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int dividerColor=0x7f010058;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int dividerDrawable=0x7f01005b;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int dividerMarginBottom=0x7f01005a;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int dividerMarginTop=0x7f010059;
         /**  Drawable to use for generic vertical dividers. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -268,22 +235,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int expandActivityOverflowButtonDrawable=0x7f010050;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int fadeOutDelay=0x7f010051;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int fadeOutDuration=0x7f010052;
         /**  Default background for the menu header. 
          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -367,44 +318,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int itemTextAppearance=0x7f010047;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int lineColor=0x7f010054;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int lineColorSelected=0x7f010055;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int lineHeight=0x7f010056;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int lineHeightSelected=0x7f010057;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -460,16 +373,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 </table>
          */
         public static final int navigationMode=0x7f01003a;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int outsideOffset=0x7f01005c;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -567,15 +470,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int textColorPrimaryInverse=0x7f010020;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int textColorSelected=0x7f010053;
         /**  Specifies title text used for navigationMode="normal" 
          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
@@ -698,10 +592,32 @@ containing a value of this type.
         public static final int abs__bright_foreground_inverse_holo_dark=0x7f060006;
         public static final int abs__bright_foreground_inverse_holo_light=0x7f060007;
         public static final int abs__holo_blue_light=0x7f060008;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f060009;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f06000a;
-        public static final int abs__primary_text_holo_dark=0x7f06000b;
-        public static final int abs__primary_text_holo_light=0x7f06000c;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f06001f;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f060020;
+        public static final int abs__primary_text_holo_dark=0x7f060021;
+        public static final int abs__primary_text_holo_light=0x7f060022;
+        public static final int black=0x7f060011;
+        public static final int black_deep=0x7f060009;
+        public static final int black_light=0x7f06000a;
+        public static final int blue=0x7f060017;
+        public static final int gold=0x7f060014;
+        public static final int gray=0x7f060012;
+        public static final int grayslate=0x7f06001d;
+        public static final int graywhite=0x7f06001c;
+        public static final int green=0x7f060016;
+        public static final int green_light=0x7f06000b;
+        public static final int green_tab=0x7f06000f;
+        public static final int grey_light=0x7f06000c;
+        public static final int lemonyellow=0x7f06001b;
+        public static final int lightblue=0x7f06001e;
+        public static final int orange=0x7f06001a;
+        public static final int pink=0x7f060019;
+        public static final int purple=0x7f060018;
+        public static final int red=0x7f060013;
+        public static final int white=0x7f060010;
+        public static final int write_light=0x7f06000d;
+        public static final int write_mibai=0x7f06000e;
+        public static final int yellow=0x7f060015;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -889,9 +805,63 @@ containing a value of this type.
         public static final int abs__tab_selected_holo=0x7f020052;
         public static final int abs__tab_selected_pressed_holo=0x7f020053;
         public static final int abs__tab_unselected_pressed_holo=0x7f020054;
-        public static final int bg_start=0x7f020055;
-        public static final int ic_action_search=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
+        public static final int background_main_tabitem=0x7f020055;
+        public static final int background_main_tabitem_message=0x7f020056;
+        public static final int background_main_tabitem_more=0x7f020057;
+        public static final int background_main_tabitem_mygroup=0x7f020058;
+        public static final int background_main_tabitem_publish=0x7f020059;
+        public static final int background_main_tabitem_select=0x7f02005a;
+        public static final int background_main_tabitem_text=0x7f02005b;
+        public static final int background_start=0x7f02005c;
+        public static final int bg_actionbar=0x7f02005d;
+        public static final int bg_attention=0x7f02005e;
+        public static final int bg_button_blue=0x7f02005f;
+        public static final int bg_button_green=0x7f020060;
+        public static final int bg_space_num=0x7f020061;
+        public static final int bg_start=0x7f020062;
+        public static final int bg_tab=0x7f020063;
+        public static final int bg_user=0x7f020064;
+        public static final int ic_action_search=0x7f020065;
+        public static final int ic_attention_add=0x7f020066;
+        public static final int ic_back=0x7f020067;
+        public static final int ic_collected=0x7f020068;
+        public static final int ic_hot=0x7f020069;
+        public static final int ic_launcher=0x7f02006a;
+        public static final int ic_level=0x7f02006b;
+        public static final int ic_location=0x7f02006c;
+        public static final int ic_lock=0x7f02006d;
+        public static final int ic_myinfo=0x7f02006e;
+        public static final int ic_now=0x7f02006f;
+        public static final int ic_officer=0x7f020070;
+        public static final int ic_people=0x7f020071;
+        public static final int ic_picture=0x7f020072;
+        public static final int ic_qq=0x7f020073;
+        public static final int ic_recommendation=0x7f020074;
+        public static final int ic_relayed=0x7f020075;
+        public static final int ic_renren=0x7f020076;
+        public static final int ic_selected=0x7f020077;
+        public static final int ic_sign=0x7f020078;
+        public static final int ic_sina=0x7f020079;
+        public static final int ic_tabitem_message=0x7f02007a;
+        public static final int ic_tabitem_message_selected=0x7f02007b;
+        public static final int ic_tabitem_more=0x7f02007c;
+        public static final int ic_tabitem_more_selected=0x7f02007d;
+        public static final int ic_tabitem_mygroup=0x7f02007e;
+        public static final int ic_tabitem_mygroup_selected=0x7f02007f;
+        public static final int ic_tabitem_publish=0x7f020080;
+        public static final int ic_tabitem_publish_selected=0x7f020081;
+        public static final int ic_tabitem_select=0x7f020082;
+        public static final int ic_tabitem_select_selected=0x7f020083;
+        public static final int ic_user=0x7f020084;
+        public static final int ic_user_sendmessage=0x7f020085;
+        public static final int ic_user_small=0x7f020086;
+        public static final int ic_usericon=0x7f020087;
+        public static final int material_divide=0x7f020088;
+        public static final int material_expand_no=0x7f020089;
+        public static final int material_expand_yes=0x7f02008a;
+        public static final int material_group_icon=0x7f02008b;
+        public static final int material_group_join=0x7f02008c;
+        public static final int material_group_out=0x7f02008d;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040022;
@@ -923,16 +893,45 @@ containing a value of this type.
         public static final int abs__title=0x7f04001b;
         public static final int abs__titleDivider=0x7f04001c;
         public static final int abs__up=0x7f04000b;
+        public static final int back=0x7f04002a;
         public static final int disableHome=0x7f040009;
         public static final int homeAsUp=0x7f040006;
+        public static final int icon=0x7f040041;
+        public static final int imageView1=0x7f040033;
+        public static final int imageView2=0x7f04003d;
+        public static final int imageView3=0x7f040035;
+        public static final int imageView4=0x7f040037;
+        public static final int imageView5=0x7f040039;
+        public static final int imageView6=0x7f04003b;
+        public static final int imageView7=0x7f04003f;
+        public static final int imageview=0x7f040042;
+        public static final int layout_login_way=0x7f04002e;
         public static final int listMode=0x7f040002;
-        public static final int menu_settings=0x7f040027;
+        public static final int login=0x7f040027;
+        public static final int main=0x7f040029;
+        public static final int menu_settings=0x7f040044;
         public static final int normal=0x7f040001;
+        public static final int pager=0x7f04002d;
+        public static final int qq=0x7f04002f;
+        public static final int register=0x7f040028;
+        public static final int renren=0x7f040031;
+        public static final int sendMessage=0x7f040032;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
+        public static final int sina=0x7f040030;
         public static final int tabMode=0x7f040003;
+        public static final int textView1=0x7f040034;
+        public static final int textView2=0x7f040036;
+        public static final int textView3=0x7f04003c;
+        public static final int textView4=0x7f040038;
+        public static final int textView5=0x7f04003a;
+        public static final int textView6=0x7f04003e;
+        public static final int textView7=0x7f040040;
+        public static final int textview=0x7f040043;
+        public static final int title=0x7f04002b;
         public static final int useLogo=0x7f040004;
+        public static final int user=0x7f04002c;
         public static final int wrap_content=0x7f040000;
     }
     public static final class integer {
@@ -959,11 +958,16 @@ containing a value of this type.
         public static final int abs__screen_action_bar_overlay=0x7f030011;
         public static final int abs__screen_simple=0x7f030012;
         public static final int abs__screen_simple_overlay_action_mode=0x7f030013;
-        public static final int activity_main=0x7f030014;
-        public static final int activity_start=0x7f030015;
-        public static final int main=0x7f030016;
-        public static final int sherlock_spinner_dropdown_item=0x7f030017;
-        public static final int sherlock_spinner_item=0x7f030018;
+        public static final int activity_login_register=0x7f030014;
+        public static final int activity_main=0x7f030015;
+        public static final int activity_start=0x7f030016;
+        public static final int activity_user=0x7f030017;
+        public static final int include_actionbar=0x7f030018;
+        public static final int item_group=0x7f030019;
+        public static final int item_main_tabitem=0x7f03001a;
+        public static final int main=0x7f03001b;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001c;
+        public static final int sherlock_spinner_item=0x7f03001d;
     }
     public static final class menu {
         public static final int activity_main=0x7f0b0000;
@@ -1110,6 +1114,9 @@ containing a value of this type.
         public static final int Theme_Sherlock_Light_NoActionBar=0x7f0a0052;
         public static final int Theme_Sherlock_NoActionBar=0x7f0a0051;
         public static final int Widget=0x7f0a0000;
+        public static final int Widget_Liuxue_Button=0x7f0a0059;
+        public static final int Widget_Liuxue_Button_Blue=0x7f0a005b;
+        public static final int Widget_Liuxue_Button_Green=0x7f0a005a;
         public static final int Widget_Sherlock_ActionBar=0x7f0a0002;
         public static final int Widget_Sherlock_ActionBar_Solid=0x7f0a0003;
         public static final int Widget_Sherlock_ActionBar_TabBar=0x7f0a000a;
@@ -1154,6 +1161,8 @@ containing a value of this type.
         public static final int Widget_Sherlock_ProgressBar_Horizontal=0x7f0a0030;
         public static final int Widget_Sherlock_Spinner_DropDown_ActionBar=0x7f0a0024;
         public static final int Widget_Sherlock_TextView_SpinnerItem=0x7f0a0032;
+        public static final int Widght_Liuxue_Divide=0x7f0a005c;
+        public static final int Widght_Liuxue_TextView_Small=0x7f0a005d;
     }
     public static final class styleable {
         /**  Attributes used to style the Action Bar. 
@@ -2986,220 +2995,5 @@ containing a value of this type.
           @attr name android:windowSplitActionBar
         */
         public static final int SherlockTheme_windowSplitActionBar = 48;
-        /** Attributes that can be used with a ViewPagerExtensions.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_dividerColor com.origwood.liuxue:dividerColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_dividerDrawable com.origwood.liuxue:dividerDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_dividerMarginBottom com.origwood.liuxue:dividerMarginBottom}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_dividerMarginTop com.origwood.liuxue:dividerMarginTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_fadeOutDelay com.origwood.liuxue:fadeOutDelay}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_fadeOutDuration com.origwood.liuxue:fadeOutDuration}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_lineColor com.origwood.liuxue:lineColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_lineColorSelected com.origwood.liuxue:lineColorSelected}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_lineHeight com.origwood.liuxue:lineHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_lineHeightSelected com.origwood.liuxue:lineHeightSelected}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_outsideOffset com.origwood.liuxue:outsideOffset}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewPagerExtensions_textColorSelected com.origwood.liuxue:textColorSelected}</code></td><td></td></tr>
-           </table>
-           @see #ViewPagerExtensions_dividerColor
-           @see #ViewPagerExtensions_dividerDrawable
-           @see #ViewPagerExtensions_dividerMarginBottom
-           @see #ViewPagerExtensions_dividerMarginTop
-           @see #ViewPagerExtensions_fadeOutDelay
-           @see #ViewPagerExtensions_fadeOutDuration
-           @see #ViewPagerExtensions_lineColor
-           @see #ViewPagerExtensions_lineColorSelected
-           @see #ViewPagerExtensions_lineHeight
-           @see #ViewPagerExtensions_lineHeightSelected
-           @see #ViewPagerExtensions_outsideOffset
-           @see #ViewPagerExtensions_textColorSelected
-         */
-        public static final int[] ViewPagerExtensions = {
-            0x7f010051, 0x7f010052, 0x7f010053, 0x7f010054,
-            0x7f010055, 0x7f010056, 0x7f010057, 0x7f010058,
-            0x7f010059, 0x7f01005a, 0x7f01005b, 0x7f01005c
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#dividerColor}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:dividerColor
-        */
-        public static final int ViewPagerExtensions_dividerColor = 7;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#dividerDrawable}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:dividerDrawable
-        */
-        public static final int ViewPagerExtensions_dividerDrawable = 10;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#dividerMarginBottom}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:dividerMarginBottom
-        */
-        public static final int ViewPagerExtensions_dividerMarginBottom = 9;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#dividerMarginTop}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:dividerMarginTop
-        */
-        public static final int ViewPagerExtensions_dividerMarginTop = 8;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#fadeOutDelay}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:fadeOutDelay
-        */
-        public static final int ViewPagerExtensions_fadeOutDelay = 0;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#fadeOutDuration}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:fadeOutDuration
-        */
-        public static final int ViewPagerExtensions_fadeOutDuration = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#lineColor}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:lineColor
-        */
-        public static final int ViewPagerExtensions_lineColor = 3;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#lineColorSelected}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:lineColorSelected
-        */
-        public static final int ViewPagerExtensions_lineColorSelected = 4;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#lineHeight}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:lineHeight
-        */
-        public static final int ViewPagerExtensions_lineHeight = 5;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#lineHeightSelected}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:lineHeightSelected
-        */
-        public static final int ViewPagerExtensions_lineHeightSelected = 6;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#outsideOffset}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:outsideOffset
-        */
-        public static final int ViewPagerExtensions_outsideOffset = 11;
-        /**
-          <p>This symbol is the offset where the {@link com.origwood.liuxue.R.attr#textColorSelected}
-          attribute's value can be found in the {@link #ViewPagerExtensions} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:textColorSelected
-        */
-        public static final int ViewPagerExtensions_textColorSelected = 2;
     };
 }

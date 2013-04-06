@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@drawable/bg_actionbar"
+    
+    android:gravity="center_vertical" >
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="登陆/注册"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+</LinearLayout>
+
