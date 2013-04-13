@@ -12,6 +12,11 @@ import android.preference.PreferenceManager;
 import com.origwood.liuxue.bean.AccessInfo;
 import com.origwood.liuxue.common.StringUtils;
 
+/**
+ * 
+ * @author wanggang
+ * @date£º 2013-4-14 email: 315331371@qq.com
+ */
 public class AppConfig {
 	private final static String APP_CONFIG = "config";
 
