@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -27,7 +26,7 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
 	private TabsAdapter mTabsAdapter;
-	private Button btnUser;
+	private View btnUser, btnRec;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,10 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 		setTheme(R.style.Theme_Sherlock_Light_NoActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		btnUser = (Button) findViewById(R.id.user);
+		btnUser = findViewById(R.id.user);
+		btnRec = findViewById(R.id.recommendation);
 		btnUser.setOnClickListener(this);
+		btnRec.setOnClickListener(this);
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -164,7 +165,8 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 
 		@Override
 		public void onTabChanged(String tabId) {
-
+			int position = mTabHost.getCurrentTab();
+			mViewPager.setCurrentItem(position);
 		}
 
 		@Override
@@ -192,7 +194,10 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 		case R.id.user:
 			startActivity(new Intent(this, User.class));
 			break;
+		case R.id.recommendation:
+			startActivity(new Intent(this, Recommendation.class));
 
+			break;
 		default:
 			break;
 		}

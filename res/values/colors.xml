@@ -8,6 +8,8 @@
     <color name="write_light">#f9f6f1</color>
      <color name="write_mibai">#e8efe0</color>
    	<color name="green_tab">#61b336</color>
+   	 	<color name="transparent">#00000000</color>
+   	
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray">#808080</color>

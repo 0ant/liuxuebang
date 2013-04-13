@@ -28,4 +28,12 @@
         <item name="android:textColor">#efefef</item>
         <item name="android:textSize">10sp</item>
     </style>
+    <style name="Widget.Liuxue.ActionBar.TextView" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/actionbar_textsize</item>
+    </style>
+    <style name="Widget.Liuxue.ActionBar.ImageButton" parent="android:Widget.ImageButton">
+        <item name="android:background">@drawable/background_actionbar</item>
+    </style>
 </resources>

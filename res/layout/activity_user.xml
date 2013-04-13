@@ -6,36 +6,37 @@
     android:background="#ffffff"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/actionbar_height"
         android:background="@drawable/bg_actionbar"
         android:gravity="center_vertical" >
 
-        <Button
+        <ImageButton
             android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_back" />
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center"
+           style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="0dp"
+            style="@style/Widget.Liuxue.ActionBar.TextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Baobu的名片"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:layout_gravity="center"
+            android:text="Baobu的资料" />
 
-        <Button
+        <ImageButton
             android:id="@+id/sendMessage"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_user_sendmessage" />
-    </LinearLayout>
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_user_sendmessage" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,9 +46,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            
-            android:padding="20dp"
-            android:background="@drawable/bg_user" >
+            android:background="@drawable/bg_user"
+            android:padding="20dp" >
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -56,16 +56,15 @@
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_usericon" />
 
-            <TextView 
+            <TextView
                 android:id="@+id/textView1"
-              
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:textColor="#ffffff"
-                android:textSize="16sp"
                 android:layout_toRightOf="@+id/imageView1"
-                android:text="Baobu" />
+                android:text="Baobu"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -99,8 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/imageView4"
                 android:layout_toRightOf="@+id/imageView4"
-                android:text="个性签名"
-            />
+                android:text="个性签名" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -112,12 +110,12 @@
 
             <TextView
                 android:id="@+id/textView5"
+                style="@style/Widght.Liuxue.TextView.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="false"
                 android:layout_alignTop="@+id/imageView5"
                 android:layout_toRightOf="@+id/imageView5"
-                style="@style/Widght.Liuxue.TextView.Small"
                 android:text="英国留学中" />
 
             <ImageView
@@ -148,7 +146,6 @@
             <TextView
                 android:id="@+id/textView6"
                 style="@style/Widght.Liuxue.TextView.Small"
-         
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -162,17 +159,15 @@
                 android:layout_marginLeft="110dp"
                 android:layout_toRightOf="@+id/textView2"
                 android:background="@drawable/bg_attention"
-                android:gravity="center"
-               >
-
-               
+                android:gravity="center" >
 
                 <ImageView
                     android:id="@+id/imageView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_attention_add" />
-                 <TextView
+
+                <TextView
                     android:id="@+id/textView7"
                     style="@style/Widght.Liuxue.TextView.Small"
                     android:layout_width="wrap_content"
@@ -180,123 +175,116 @@
                     android:text="加关注" />
             </LinearLayout>
         </RelativeLayout>
-        <LinearLayout 
-             android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-            >
-            <LinearLayout 
-                 android:layout_width="0dp"
-                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
                     android:gravity="center"
-                >
-                
-                <TextView 
-                          android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="10"
-                    android:gravity="center"
                     android:textColor="@color/black_light"
-                    android:textSize="20dp"
-                    />
-                 <TextView 
-                          android:layout_width="match_parent"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="加入帮"
-                    android:textColor="@color/grey_light"
-                      android:gravity="center"
-                    />
+                    android:textColor="@color/grey_light" />
             </LinearLayout>
-            <LinearLayout 
-                 android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                >
-                
-                <TextView 
-                          android:layout_width="match_parent"
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="20"
-                    android:gravity="center"
                     android:textColor="@color/black_light"
-                    android:textSize="20dp"
-                    />
-                 <TextView 
-                          android:layout_width="match_parent"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="关注"
-                    android:textColor="@color/grey_light"
-                      android:gravity="center"
-                    />
+                    android:textColor="@color/grey_light" />
             </LinearLayout>
-            <LinearLayout 
-                 android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                >
-                
-                <TextView 
-                          android:layout_width="match_parent"
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="9"
-                    android:gravity="center"
                     android:textColor="@color/black_light"
-                    android:textSize="20dp"
-                    />
-                 <TextView 
-                          android:layout_width="match_parent"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="粉丝"
-                    android:textColor="@color/grey_light"
-                      android:gravity="center"
-                    />
+                    android:textColor="@color/grey_light" />
             </LinearLayout>
-            <LinearLayout 
-                 android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                >
-                
-                <TextView 
-                          android:layout_width="match_parent"
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="14"
-                    android:gravity="center"
                     android:textColor="@color/black_light"
-                    android:textSize="20dp"
-                    />
-                 <TextView 
-                          android:layout_width="match_parent"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="收藏"
-                    android:textColor="@color/grey_light"
-                      android:gravity="center"
-                    />
+                    android:textColor="@color/grey_light" />
             </LinearLayout>
-            
         </LinearLayout>
-        <ExpandableListView 
-              android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-            >
-            
-            
+
+        <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
         </ExpandableListView>
     </LinearLayout>
 

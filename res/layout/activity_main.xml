@@ -5,35 +5,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+       <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/actionbar_height"
         android:background="@drawable/bg_actionbar"
         android:gravity="center_vertical" >
 
-        <Button
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_recommendation" />
+        <ImageButton
+            android:id="@+id/recommendation"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center"
+           style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:src="@drawable/ic_recommendation" />
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="0dp"
+            style="@style/Widget.Liuxue.ActionBar.TextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="我的留学帮"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:textSize="20sp" />
-        <Button
+            android:layout_gravity="center"
+            android:text="Baobu的资料" />
+
+        <ImageButton
             android:id="@+id/user"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_myinfo" />
-    </LinearLayout>
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_myinfo" />
+    </FrameLayout>
+   
+            
+
+  
+
 
     <TabHost
         android:id="@android:id/tabhost"
