@@ -1,13 +1,13 @@
 package com.origwood.liuxue.ui;
 
-import android.app.Activity;
+import roboguice.activity.RoboActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.origwood.liuxue.R;
 
-public class Base extends Activity {
+public class Base extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setTheme(android.R.style.Theme_NoTitleBar);

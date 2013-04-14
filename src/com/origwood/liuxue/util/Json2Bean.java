@@ -1,7 +1,5 @@
 package com.origwood.liuxue.util;
 
-import static com.origwood.liuxue.AppContext.DEBUG;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.origwood.liuxue.bean.Result;
+
 /**
  * the tool class for change json to object
  * 
@@ -20,32 +20,55 @@ import org.json.JSONObject;
  */
 public class Json2Bean {
 
+	private static final boolean DEBUG = false;
+
+	public static <T> T getComplexBean(String content, Class<T> beanClass,
+			Class... classes) {
+
+		return null;
+	}
+
+	public static Result getResult(String content) {
+		try {
+			JSONObject jsonObject = new JSONObject(content);
+			Result result = new Result();
+			result.setMsg(jsonObject.optString("msg"));
+			result.setSubResultType(jsonObject.optInt("subResultType"));
+			return result;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
 	@SuppressWarnings("unchecked")
 	public static <T> T getBean(String content, Class<T> beanClass) {
 		if (content == null) {
 			return null;
 		}
 		if (DEBUG)
-			Logger.i(content);
+			Loger.i(content);
 		T bean = null;
 		try {
 			JSONObject jsonObject = new JSONObject(content);
 			Iterator<String> keys = jsonObject.keys();
 			bean = beanClass.newInstance();
 			if (DEBUG)
-				Logger.i("beanClass=" + beanClass.getName());
+				Loger.i("beanClass=" + beanClass.getName());
 			while (keys.hasNext()) {
 				String key = keys.next();
 
 				if (DEBUG)
-					Logger.i("the field is '" + key + "'");
+					Loger.i("the field is '" + key + "'");
 				Field field;
 				try {
 					field = beanClass.getDeclaredField(key);
 					field.setAccessible(true);
 					field.set(bean, jsonObject.get(key));
 				} catch (NoSuchFieldException e) {
-					Logger.e("NoSuchFieldException");
+					Loger.e("NoSuchFieldException");
 					e.printStackTrace();
 				} catch (IllegalArgumentException e) {
 					// TODO Auto-generated catch block
@@ -78,12 +101,12 @@ public class Json2Bean {
 		}
 		List<T> list;
 		if (DEBUG)
-			Logger.i(content);
+			Loger.i(content);
 		JSONArray jsonArray = null;
 		try {
 			jsonArray = new JSONArray(content);
 		} catch (JSONException e) {
-			Logger.e("The wrong JSON data format");
+			Loger.e("The wrong JSON data format");
 			return null;
 		}
 		list = new ArrayList<T>();
@@ -104,12 +127,12 @@ public class Json2Bean {
 		}
 		LinkedList<T> list;
 		if (DEBUG)
-			Logger.i(content);
+			Loger.i(content);
 		JSONArray jsonArray = null;
 		try {
 			jsonArray = new JSONArray(content);
 		} catch (JSONException e) {
-			Logger.e("The wrong JSON data format");
+			Loger.e("The wrong JSON data format");
 			return null;
 		}
 		list = new LinkedList<T>();
