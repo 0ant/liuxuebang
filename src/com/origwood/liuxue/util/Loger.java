@@ -1,6 +1,6 @@
 package com.origwood.liuxue.util;
 
-public class Logger {
+public class Loger {
 	private final static String TAG = "liuxuebang";
 
 	public static void i(String message) {
