@@ -1,5 +1,7 @@
 package com.origwood.liuxue.util;
 
+import static com.origwood.liuxue.AppContext.DEBUG;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,15 +22,9 @@ import com.origwood.liuxue.bean.Result;
  */
 public class Json2Bean {
 
-	private static final boolean DEBUG = false;
-
-	public static <T> T getComplexBean(String content, Class<T> beanClass,
-			Class... classes) {
-
-		return null;
-	}
-
 	public static Result getResult(String content) {
+		if (DEBUG)
+			Loger.i("result" + content);
 		try {
 			JSONObject jsonObject = new JSONObject(content);
 			Result result = new Result();
@@ -36,10 +32,63 @@ public class Json2Bean {
 			result.setSubResultType(jsonObject.optInt("subResultType"));
 			return result;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		return null;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T> T getBeanFromHasResult(String content, Class<T> beanClass) {
+		if (DEBUG)
+			Loger.i("result" + content);
+		try {
+			JSONObject jsonObject = new JSONObject(content)
+					.getJSONObject("item");
+			Iterator<String> keys = jsonObject.keys();
+			T bean = null;
+			try {
+				bean = beanClass.newInstance();
+			} catch (InstantiationException e1) {
+
+				e1.printStackTrace();
+			} catch (IllegalAccessException e1) {
+
+				e1.printStackTrace();
+			}
+			if (DEBUG)
+				Loger.i("beanClass=" + beanClass.getName());
+			while (keys.hasNext()) {
+				String key = keys.next();
+
+				if (DEBUG)
+					Loger.i("the field is '" + key + "'");
+				Field field;
+				try {
+					field = beanClass.getDeclaredField(key);
+					field.setAccessible(true);
+					field.set(bean, jsonObject.get(key));
+				} catch (NoSuchFieldException e) {
+					Loger.e("NoSuchFieldException");
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+
+					e.printStackTrace();
+				} catch (JSONException e) {
+
+					e.printStackTrace();
+				}
+			}
+			return bean;
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+			return null;
+		}
 
 	}
 

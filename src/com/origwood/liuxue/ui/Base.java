@@ -5,9 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.google.inject.Inject;
 import com.origwood.liuxue.R;
+import com.origwood.liuxue.service.AppService;
 
 public class Base extends RoboActivity {
+	@Inject
+	protected AppService service;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setTheme(android.R.style.Theme_NoTitleBar);

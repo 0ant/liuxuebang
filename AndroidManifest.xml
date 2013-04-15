@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".ui.Login" />
         <activity android:name=".ui.Main" />
-        <activity android:name=".ui.User" />
+        <activity android:name=".ui.UserSpace" />
         <activity android:name=".ui.Recommendation" />
 
         <!-- 腾讯接口接入 -->

@@ -5,13 +5,13 @@ import com.origwood.liuxue.bean.Result;
 public abstract class AbsAppServiceOnFinished implements AppServiceOnFinished {
 
 	@Override
-	public void onSuccese(Result result, Object object) {
+	public void onSuccess(Result result, Object object) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void onSuccese(Object object) {
+	public void onSuccess(Object object) {
 		// TODO Auto-generated method stub
 
 	}

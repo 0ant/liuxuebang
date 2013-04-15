@@ -12,7 +12,7 @@ public interface AppServiceOnFinished {
 	 *            操作结果
 	 * 
 	 */
-	public void onSuccese(Result result, Object object);
+	public void onSuccess(Result result, Object object);
 
 	/**
 	 * 操作成功
@@ -20,7 +20,7 @@ public interface AppServiceOnFinished {
 	 * @param object
 	 *            从网络获取到的数据，可能是一个简单对象，也可能是一个List
 	 */
-	public void onSuccese(Object object);
+	public void onSuccess(Object object);
 
 	/**
 	 * 操作失败，用户的请求不符合要求。
@@ -29,4 +29,5 @@ public interface AppServiceOnFinished {
 	 *            操作结果
 	 */
 	public void onFailed(Result result);
+
 }

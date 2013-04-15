@@ -192,7 +192,7 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.user:
-			startActivity(new Intent(this, User.class));
+			startActivity(new Intent(this, UserSpace.class));
 			break;
 		case R.id.recommendation:
 			startActivity(new Intent(this, Recommendation.class));
