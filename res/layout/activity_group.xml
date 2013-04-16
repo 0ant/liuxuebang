@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+ <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:background="@drawable/bg_actionbar"
+        android:gravity="center_vertical" >
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center"
+          	 style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Widget.Liuxue.ActionBar.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="加州留学帮" />
+
+        <ImageButton
+            android:id="@+id/pub_topic"
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_bar_reply" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+         >
+        <include layout="@layout/head_group"/>
+        <ListView 
+            android:id="@+id/list"
+             android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/material_divide"
+            ></ListView>
+        
+    </LinearLayout>
+
+</LinearLayout>
