@@ -18,6 +18,19 @@
 
         <ListView
             android:id="@+id/list"
+            android:divider="@null"
+            android:dividerHeight="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:overScrollHeader="@color/green"
+        
+           
+            android:smoothScrollbar="true"
+            
+            android:fastScrollEnabled="true"
+            android:scrollbarStyle="outsideOverlay"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

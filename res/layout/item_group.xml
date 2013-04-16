@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/write_light"
+
     android:paddingLeft="5dp"
     android:paddingTop="5dp" >
 
@@ -26,7 +27,7 @@
         
        >
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/nikename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="最新发表帖子的标题" />
@@ -73,11 +74,13 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/jionorout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/material_group_join" />
+        android:src="@drawable/material_group_join"
+        style="@style/Widget.Liuxue.ActionBar.ImageButton.WriteGreen"
+    />
 
 </LinearLayout>

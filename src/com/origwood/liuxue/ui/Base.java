@@ -4,6 +4,7 @@ import roboguice.activity.RoboActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.origwood.liuxue.R;
@@ -25,15 +26,21 @@ public class Base extends RoboActivity {
 
 		super.onStart();
 		if (findViewById(R.id.back) != null) {
-			View view = findViewById(R.id.back);
-			view.setOnClickListener(new OnClickListener() {
+
+			findViewById(R.id.back).setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
 					finish();
-
 				}
 			});
 		}
+		if (findViewById(R.id.title) != null) {
+			if (getIntent().getStringExtra("title") != null) {
+				TextView tvTitle = (TextView) findViewById(R.id.title);
+				tvTitle.setText(getIntent().getStringExtra("title"));
+			}
+		}
+
 	}
 }

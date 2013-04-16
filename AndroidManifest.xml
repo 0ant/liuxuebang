@@ -25,7 +25,9 @@
         <activity android:name=".ui.Login" />
         <activity android:name=".ui.Main" />
         <activity android:name=".ui.UserSpace" />
+        <activity android:name=".ui.MyFans" />
         <activity android:name=".ui.Recommendation" />
+        <activity android:name=".ui.GroupSpace" />
 
         <!-- 腾讯接口接入 -->
 

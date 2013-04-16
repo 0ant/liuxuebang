@@ -1,9 +1,12 @@
 package com.origwood.liuxue.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -22,6 +25,15 @@ public class FragmentMyGroup extends SherlockFragment {
 			Bundle savedInstanceState) {
 		ListView listView = new ListView(getActivity());
 		listView.setAdapter(new GroupAdapter(getActivity()));
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Intent mIntent = new Intent(getActivity(), GroupSpace.class);
+				startActivity(mIntent);
+			}
+		});
 		return listView;
 	}
 

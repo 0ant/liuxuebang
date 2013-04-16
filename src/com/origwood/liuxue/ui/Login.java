@@ -36,7 +36,8 @@ public class Login extends Base implements OnClickListener {
 		// btnRegister = (Button) findViewById(R.id.register);
 		btnLogin.setOnClickListener(this);
 		btnRegister.setOnClickListener(this);
-
+		etUsername.setText("414892186");
+		etPassword.setText("123456789");
 	}
 
 	@Override

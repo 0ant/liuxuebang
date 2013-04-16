@@ -56,7 +56,7 @@ public class GroupAdapter extends BaseAdapter {
 			v.imgOfficer = (ImageView) convertView.findViewById(R.id.officer);
 			v.tvMemnum = (TextView) convertView.findViewById(R.id.memnum);
 			v.tvMessage = (TextView) convertView.findViewById(R.id.message);
-			v.tvName = (TextView) convertView.findViewById(R.id.name);
+			v.tvName = (TextView) convertView.findViewById(R.id.nikename);
 
 		} else {
 			v = (ViewHolder) convertView.getTag();

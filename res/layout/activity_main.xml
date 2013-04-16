@@ -7,7 +7,7 @@
 
        <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/actionbar_height"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_actionbar"
         android:gravity="center_vertical" >
 
@@ -67,7 +67,7 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:background="@drawable/bg_tab"
                 android:orientation="horizontal" />

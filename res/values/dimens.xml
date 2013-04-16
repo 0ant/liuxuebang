@@ -8,7 +8,7 @@
     <dimen name="news_content">10sp</dimen>
     <dimen name="news_time">10dp</dimen>
     <dimen name="actionbar_height">45dp</dimen>
-    <dimen name="actionbar_icon_weight">45dp</dimen>
+    <dimen name="actionbar_icon_weight">50dp</dimen>
      <dimen name="actionbar_textsize">20sp</dimen>
  
     <dimen name="btn_demo_margin_h">50dip</dimen>
@@ -17,4 +17,7 @@
 	<dimen name="common_view_margin">8dip</dimen>
 	
 	<dimen name="text_introduction_size">19sp</dimen>
+	
+	<dimen name="listview_divider_height">8sp</dimen>
+	<dimen name="listview_margin">8sp</dimen>
 </resources>

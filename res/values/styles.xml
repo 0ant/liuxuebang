@@ -36,4 +36,7 @@
     <style name="Widget.Liuxue.ActionBar.ImageButton" parent="android:Widget.ImageButton">
         <item name="android:background">@drawable/background_actionbar</item>
     </style>
+     <style name="Widget.Liuxue.ActionBar.ImageButton.WriteGreen" parent="android:Widget.ImageButton">
+        <item name="android:background">@drawable/background_imagebutton_writegreen</item>
+    </style>
 </resources>
