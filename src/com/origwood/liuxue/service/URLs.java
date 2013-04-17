@@ -7,4 +7,5 @@ public class URLs {
 	public static final String USERINFO = HOST + ACTION + "user/detail";
 	public static final String CHECKISREGISTER = HOST + ACTION
 			+ "validateLoginNameUsed?";
+	public static final String MODIFYPWD = HOST + ACTION + "user/mofifyPwd";
 }

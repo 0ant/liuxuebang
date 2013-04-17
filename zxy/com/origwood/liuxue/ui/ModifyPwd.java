@@ -29,7 +29,7 @@ public class ModifyPwd extends Base {
 	protected void onCreate(Bundle savedInstanceState) {
 		setTheme(android.R.style.Theme_NoTitleBar);
 		super.onCreate(savedInstanceState);
-		mTitle.setText("ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½");
+		mTitle.setText("×¢²á");
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ModifyPwd extends Base {
 
 				@Override
 				public void onSuccess(Object object) {
-					Toast.makeText(getApplicationContext(), "ï¿½Þ¸Ä³É¹ï¿½",
+					Toast.makeText(getApplicationContext(), "ÐÞ¸Ä³É¹¦",
 							Toast.LENGTH_SHORT).show();
 				}
 
@@ -61,7 +61,7 @@ public class ModifyPwd extends Base {
 			}, this);
 			return;
 		}
-		mReNewEditText.setError("ï¿½ï¿½ï¿½ë²»Ò»ï¿½ï¿½");
+		mReNewEditText.setError("Á½´ÎÊäÈëµ½ÃÜÂë²»Ò»ÖÂ");
 	}
 
 	public void reset(View view) {

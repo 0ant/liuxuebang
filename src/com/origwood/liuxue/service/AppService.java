@@ -1,6 +1,7 @@
 package com.origwood.liuxue.service;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.inject.Singleton;
 import com.loopj.android.http.AsyncHttpClient;
@@ -20,7 +21,7 @@ import com.origwood.liuxue.util.Json2Bean;
 @Singleton
 public class AppService {
 	private Context context;
-
+	private static final String DUG_TAG="AppService";
 	public AppService() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,7 +37,38 @@ public class AppService {
 	public static void stop(Context context, boolean b) {
 		client.cancelRequests(context, b);
 	}
+	public void modifyPwd(String newPwd,String oldPwd,
+			final AppServiceOnFinished a, final Context context) {
+		RequestParams params=new RequestParams();
+		params.put("newPwd", newPwd);
+		params.put("oldPwd", oldPwd);
+		Log.d(DUG_TAG, URLs.MODIFYPWD);
+		client.get(URLs.MODIFYPWD, params, new AsyncHttpResponseHandler(){
 
+			@Override
+			public void onFailure(Throwable arg0, String arg1) {
+				Result result = new Result();
+				result.setMsg("Á¬½Ó´íÎó");
+				a.onFailed(result);
+				Log.e(DUG_TAG, arg0+arg1);
+			}
+
+			@Override
+			public void onSuccess(String response) {
+				Result result = Json2Bean.getResult(response);
+				if (result.getSubResultType() == 0) {
+					a.onFailed(result);
+				} else {
+					PersistentCookieStore myCookieStore = new PersistentCookieStore(
+							context);
+					client.setCookieStore(null);
+					client.setCookieStore(myCookieStore);
+					a.onSuccess(result);
+				}
+			}
+			
+		});
+	}
 	public static Object getUserById(String id, final AppServiceOnFinished a) {
 
 		client.get("http://42.96.136.159/app/subUserLogin",
