@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.origwood.liuxue.keep.AccessTokenKeeper;
 import com.origwood.liuxue.ui.Base;
 import com.origwood.liuxue.ui.Login;
+import com.origwood.liuxue.ui.ModifyPwd;
+import com.origwood.liuxue.ui.PerfectInfo;
 import com.renren.api.connect.android.Renren;
 import com.renren.api.connect.android.exception.RenrenAuthError;
 import com.renren.api.connect.android.view.RenrenAuthListener;
@@ -199,7 +201,7 @@ public class AppStart extends Base implements OnClickListener {
 			startActivity(new Intent(this, Login.class));
 			break;
 		case R.id.register:
-
+			startActivity(new Intent(this,PerfectInfo.class));
 			break;
 		default:
 			break;

@@ -1,6 +1,13 @@
 package com.origwood.liuxue.service;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.inject.Singleton;
 import com.loopj.android.http.AsyncHttpClient;
@@ -9,6 +16,7 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.bean.User;
+import com.origwood.liuxue.util.ImageTools;
 import com.origwood.liuxue.util.Json2Bean;
 
 /**
@@ -20,6 +28,7 @@ import com.origwood.liuxue.util.Json2Bean;
 @Singleton
 public class AppService {
 	private Context context;
+	private static final String DUG_TAG = "AppService";
 
 	public AppService() {
 		super();
@@ -35,6 +44,39 @@ public class AppService {
 
 	public static void stop(Context context, boolean b) {
 		client.cancelRequests(context, b);
+	}
+
+	public void modifyPwd(String newPwd, String oldPwd,
+			final AppServiceOnFinished a, final Context context) {
+		RequestParams params = new RequestParams();
+		params.put("newPwd", newPwd);
+		params.put("oldPwd", oldPwd);
+		Log.d(DUG_TAG, URLs.MODIFYPWD);
+		client.get(URLs.MODIFYPWD, params, new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onFailure(Throwable arg0, String arg1) {
+				Result result = new Result();
+				result.setMsg("连接错误");
+				a.onFailed(result);
+				Log.e(DUG_TAG, arg0 + arg1);
+			}
+
+			@Override
+			public void onSuccess(String response) {
+				Result result = Json2Bean.getResult(response);
+				if (result.getSubResultType() == 0) {
+					a.onFailed(result);
+				} else {
+					PersistentCookieStore myCookieStore = new PersistentCookieStore(
+							context);
+					client.setCookieStore(null);
+					client.setCookieStore(myCookieStore);
+					a.onSuccess(result);
+				}
+			}
+
+		});
 	}
 
 	public static Object getUserById(String id, final AppServiceOnFinished a) {
@@ -126,7 +168,38 @@ public class AppService {
 							onFinished.onSuccess(null);
 						}
 					}
-
 				});
 	}
+
+	public void subInfoSetting(Drawable usericon, String sex, String nickname,
+			String stage, String phone, final AppServiceOnFinished onFinished,
+			final Context context) {
+		RequestParams params = new RequestParams();
+		byte[] icon=ImageTools.getInstance().Drawable2Bytes(usericon);
+		params.put("headImgFile", new ByteArrayInputStream(icon),"icon.png");
+		params.put("sex", sex);
+		params.put("nicckName", nickname);
+		params.put("stage", stage);
+		params.put("mobilePhone", phone);
+		client.get(URLs.INFOSETTING, params,new AsyncHttpResponseHandler(){
+
+			@Override
+			public void onFailure(Throwable arg0, String arg1) {
+				Log.e(DUG_TAG, arg0+arg1);
+				Toast.makeText(context, "连接失败", Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onSuccess(String response) {
+				Result result = Json2Bean.getResult(response);
+				if (result.getSubResultType() == 0) {
+					onFinished.onFailed(result);
+				} else {
+					onFinished.onSuccess(null);
+				}
+			}
+			
+		});
+	}
+
 }
