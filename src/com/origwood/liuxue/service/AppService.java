@@ -2,6 +2,12 @@ package com.origwood.liuxue.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -16,6 +22,7 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.bean.User;
+import com.origwood.liuxue.ui.PerfectInfo;
 import com.origwood.liuxue.util.ImageTools;
 import com.origwood.liuxue.util.Json2Bean;
 
@@ -174,23 +181,25 @@ public class AppService {
 	public void subInfoSetting(Drawable usericon, String sex, String nickname,
 			String stage, String phone, final AppServiceOnFinished onFinished,
 			final Context context) {
+		Log.i(DUG_TAG, sex+stage);
 		RequestParams params = new RequestParams();
 		byte[] icon=ImageTools.getInstance().Drawable2Bytes(usericon);
 		params.put("headImgFile", new ByteArrayInputStream(icon),"icon.png");
 		params.put("sex", sex);
-		params.put("nicckName", nickname);
+		params.put("nickName", nickname);
 		params.put("stage", stage);
 		params.put("mobilePhone", phone);
-		client.get(URLs.INFOSETTING, params,new AsyncHttpResponseHandler(){
+		client.post(URLs.INFOSETTING, params,new AsyncHttpResponseHandler(){
 
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
 				Log.e(DUG_TAG, arg0+arg1);
-				Toast.makeText(context, "连接失败", Toast.LENGTH_SHORT).show();
+				onFinished.onFailed(null);
 			}
 
 			@Override
 			public void onSuccess(String response) {
+				Log.i(DUG_TAG, response);
 				Result result = Json2Bean.getResult(response);
 				if (result.getSubResultType() == 0) {
 					onFinished.onFailed(result);
@@ -199,6 +208,44 @@ public class AppService {
 				}
 			}
 			
+		});
+	}
+	public void getUserAllStage(final Context context,final AbsAppServiceOnFinished onFinished) {
+		final Result result=new Result();
+		client.get(URLs.GETUSERALLSTAGE, new AsyncHttpResponseHandler(){
+			@Override
+			public void onFailure(Throwable arg0, String arg1) {
+				Log.e(DUG_TAG, "网络异常");
+				result.setMsg("网络异常");
+				onFinished.onFailed(result);
+			}
+
+			@Override
+			public void onSuccess(String content) {
+				Log.i(DUG_TAG, content);
+				try {
+					JSONObject jsonObject = new JSONObject(content);
+					int subResultType=jsonObject.optInt("subResultType");
+					if(subResultType==1){
+						LinkedHashMap<String, String> values=new LinkedHashMap<String, String>();
+						values.clear();
+						JSONArray jsonArray=jsonObject.getJSONArray("items");
+						for(int i=0;i<jsonArray.length();i++){
+							JSONObject obj=jsonArray.getJSONObject(i);
+							String name=obj.getString("name");
+							String value=obj.getString("value");
+							values.put(name, value);
+							Log.i(DUG_TAG, name+"==="+ value);
+						}
+						onFinished.onSuccess(values);
+						return;
+					}
+					result.setMsg("服务器异常");
+					onFinished.onFailed(result);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
 		});
 	}
 

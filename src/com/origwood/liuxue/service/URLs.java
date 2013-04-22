@@ -9,4 +9,5 @@ public class URLs {
 			+ "validateLoginNameUsed?";
 	public static final String MODIFYPWD = HOST + ACTION + "user/mofifyPwd";
 	public static final String INFOSETTING = HOST + ACTION + "user/subInfoSetting";
+	public static final String GETUSERALLSTAGE = HOST + ACTION + "getUserAllStage";
 }
