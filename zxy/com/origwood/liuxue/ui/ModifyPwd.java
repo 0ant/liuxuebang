@@ -4,16 +4,13 @@ import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.inject.Inject;
 import com.origwood.liuxue.R;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.service.AbsAppServiceOnFinished;
-import com.origwood.liuxue.service.AppService;
 @ContentView(R.layout.activity_modifypwd)
 public class ModifyPwd extends Base {
 	@InjectView(R.id.mp_oldpwd)
@@ -27,9 +24,8 @@ public class ModifyPwd extends Base {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(android.R.style.Theme_NoTitleBar);
 		super.onCreate(savedInstanceState);
-		mTitle.setText("ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½");
+		mTitle.setText("×¢²á");
 	}
 
 	@Override
@@ -45,23 +41,20 @@ public class ModifyPwd extends Base {
 		String renewPwd=mReNewEditText.getText().toString().trim();
 		if(!TextUtils.isEmpty(newPwd)&&newPwd.equals(renewPwd)){
 			service.modifyPwd(newPwd, oldPwd, new AbsAppServiceOnFinished() {
-
 				@Override
 				public void onSuccess(Object object) {
-					Toast.makeText(getApplicationContext(), "ï¿½Þ¸Ä³É¹ï¿½",
+					Toast.makeText(getApplicationContext(), "ÐÞ¸Ä³É¹¦",
 							Toast.LENGTH_SHORT).show();
 				}
-
 				@Override
 				public void onFailed(Result result) {
 					Toast.makeText(getApplicationContext(), result.getMsg(),
 							Toast.LENGTH_SHORT).show();
 				}
-				
 			}, this);
 			return;
 		}
-		mReNewEditText.setError("ï¿½ï¿½ï¿½ë²»Ò»ï¿½ï¿½");
+		mReNewEditText.setError("Á½´ÎÊäÈëµ½ÃÜÂë²»Ò»ÖÂ");
 	}
 
 	public void reset(View view) {

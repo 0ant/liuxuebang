@@ -28,6 +28,8 @@
         <activity android:name=".ui.MyFans" />
         <activity android:name=".ui.Recommendation" />
         <activity android:name=".ui.GroupSpace" />
+        <activity android:name=".ui.ModifyPwd" />
+        <activity android:name=".ui.PerfectInfo" />
 
         <!-- 腾讯接口接入 -->
 

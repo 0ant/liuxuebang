@@ -17,7 +17,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.webkit.CacheManager;
 
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.common.MethodsCompat;
@@ -291,7 +290,7 @@ public class AppContext extends Application {
 	 */
 	public void clearAppCache() {
 		// Çå³ýwebview»º´æ
-		File file = CacheManager.getCacheFileBaseDir();
+		File file = new File("");
 		if (file != null && file.exists() && file.isDirectory()) {
 			for (File item : file.listFiles()) {
 				item.delete();
