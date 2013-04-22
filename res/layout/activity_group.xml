@@ -2,21 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/white"
     android:orientation="vertical" >
 
- <FrameLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/actionbar_height"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_actionbar"
         android:gravity="center_vertical" >
 
         <ImageButton
             android:id="@+id/back"
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
             android:layout_width="@dimen/actionbar_icon_weight"
             android:layout_height="match_parent"
             android:layout_gravity="left|center"
-          	 style="@style/Widget.Liuxue.ActionBar.ImageButton"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -36,19 +36,19 @@
             android:contentDescription="TODO"
             android:src="@drawable/ic_bar_reply" />
     </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-         >
-        <include layout="@layout/head_group"/>
-        <ListView 
-            android:id="@+id/list"
-             android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@drawable/material_divide"
-            ></ListView>
-        
+        android:orientation="vertical" >
+
+        <include layout="@layout/head_group" />
+
+        <include
+          
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/include_listview_group" />
     </LinearLayout>
 
 </LinearLayout>

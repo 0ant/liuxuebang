@@ -1,8 +1,6 @@
 package com.origwood.liuxue.service;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
@@ -10,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,7 +19,6 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.bean.User;
-import com.origwood.liuxue.ui.PerfectInfo;
 import com.origwood.liuxue.util.ImageTools;
 import com.origwood.liuxue.util.Json2Bean;
 
@@ -106,6 +102,18 @@ public class AppService {
 		return null;
 	}
 
+	/**
+	 * 用户登录
+	 * 
+	 * @param username
+	 *            用户名
+	 * @param password
+	 *            密码
+	 * @param a
+	 *            完成后回调接口
+	 * @param context
+	 *            上下文对象
+	 */
 	public void login(String username, String password,
 			final AppServiceOnFinished a, final Context context) {
 		RequestParams params = new RequestParams();
@@ -141,6 +149,11 @@ public class AppService {
 		});
 	}
 
+	/**
+	 * 获得用户信息
+	 * 
+	 * @param onFinished
+	 */
 	public void getUserInfo(final AppServiceOnFinished onFinished) {
 
 		client.get(URLs.USERINFO, new AsyncHttpResponseHandler() {
@@ -159,6 +172,55 @@ public class AppService {
 		});
 	}
 
+	/**
+	 * 用户注册
+	 * 
+	 * @param username
+	 * @param password
+	 * @param onFinished
+	 * @param context
+	 */
+	public void register(final String username, final String password,
+			final AppServiceOnFinished onFinished, final Context context) {
+		RequestParams params = new RequestParams();
+		params.put("loginName", username);
+		params.put("password", password);
+
+		client.get(URLs.REGISTER, params, new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(String response) {
+
+				Result result = Json2Bean.getResult(response);
+				if (result.getSubResultType() == 0) {
+					onFinished.onFailed(result);
+
+				} else {
+					Toast.makeText(context, "注册成功", Toast.LENGTH_SHORT).show();
+					login(username, password, onFinished, context);
+
+				}
+			}
+
+			@Override
+			public void onFailure(Throwable arg0, String arg1) {
+
+				Result result = new Result();
+				result.setMsg("请检查网络连接");
+				onFinished.onFailed(result);
+				super.onFailure(arg0, arg1);
+			}
+
+		});
+	}
+
+	/**
+	 * 检查用户名是否被注册
+	 * 
+	 * @param username
+	 *            用户名
+	 * @param onFinished
+	 *            完成之后的回调接口
+	 */
 	public void checkIsRegister(String username,
 			final AppServiceOnFinished onFinished) {
 
@@ -181,19 +243,19 @@ public class AppService {
 	public void subInfoSetting(Drawable usericon, String sex, String nickname,
 			String stage, String phone, final AppServiceOnFinished onFinished,
 			final Context context) {
-		Log.i(DUG_TAG, sex+stage);
+		Log.i(DUG_TAG, sex + stage);
 		RequestParams params = new RequestParams();
-		byte[] icon=ImageTools.getInstance().Drawable2Bytes(usericon);
-		params.put("headImgFile", new ByteArrayInputStream(icon),"icon.png");
+		byte[] icon = ImageTools.getInstance().Drawable2Bytes(usericon);
+		params.put("headImgFile", new ByteArrayInputStream(icon), "icon.png");
 		params.put("sex", sex);
 		params.put("nickName", nickname);
 		params.put("stage", stage);
 		params.put("mobilePhone", phone);
-		client.post(URLs.INFOSETTING, params,new AsyncHttpResponseHandler(){
+		client.post(URLs.INFOSETTING, params, new AsyncHttpResponseHandler() {
 
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
-				Log.e(DUG_TAG, arg0+arg1);
+				Log.e(DUG_TAG, arg0 + arg1);
 				onFinished.onFailed(null);
 			}
 
@@ -207,12 +269,14 @@ public class AppService {
 					onFinished.onSuccess(null);
 				}
 			}
-			
+
 		});
 	}
-	public void getUserAllStage(final Context context,final AbsAppServiceOnFinished onFinished) {
-		final Result result=new Result();
-		client.get(URLs.GETUSERALLSTAGE, new AsyncHttpResponseHandler(){
+
+	public void getUserAllStage(final Context context,
+			final AbsAppServiceOnFinished onFinished) {
+		final Result result = new Result();
+		client.get(URLs.GETUSERALLSTAGE, new AsyncHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
 				Log.e(DUG_TAG, "网络异常");
@@ -225,17 +289,17 @@ public class AppService {
 				Log.i(DUG_TAG, content);
 				try {
 					JSONObject jsonObject = new JSONObject(content);
-					int subResultType=jsonObject.optInt("subResultType");
-					if(subResultType==1){
-						LinkedHashMap<String, String> values=new LinkedHashMap<String, String>();
+					int subResultType = jsonObject.optInt("subResultType");
+					if (subResultType == 1) {
+						LinkedHashMap<String, String> values = new LinkedHashMap<String, String>();
 						values.clear();
-						JSONArray jsonArray=jsonObject.getJSONArray("items");
-						for(int i=0;i<jsonArray.length();i++){
-							JSONObject obj=jsonArray.getJSONObject(i);
-							String name=obj.getString("name");
-							String value=obj.getString("value");
+						JSONArray jsonArray = jsonObject.getJSONArray("items");
+						for (int i = 0; i < jsonArray.length(); i++) {
+							JSONObject obj = jsonArray.getJSONObject(i);
+							String name = obj.getString("name");
+							String value = obj.getString("value");
 							values.put(name, value);
-							Log.i(DUG_TAG, name+"==="+ value);
+							Log.i(DUG_TAG, name + "===" + value);
 						}
 						onFinished.onSuccess(values);
 						return;

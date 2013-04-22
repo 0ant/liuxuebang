@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/write_light" >
+
+    <ImageView
+        android:id="@+id/usericon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="@null"
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_usericon" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/material_topic_timeline" >
+
+        <ImageView
+            android:id="@+id/usertype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/material_topic_tag_follower" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+   <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:id="@+id/voice"
+            android:src="@drawable/ic_topic_voice" />
+          <TextView
+                android:id="@+id/voice_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+              
+                android:gravity="bottom"
+                android:text="12'"
+                android:textColor="@color/grey_light" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_topic_detail" 
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="新西兰人热爱户外。我们在炎热的夏季和温暖的冬季游览美丽的国家公园、海滩与河流。您可以划皮艇、骑山地车、冲浪、攀绳下降、跳伞、与海豚共泳、探洞，当然，还有蹦极！" />
+        	<ImageButton 
+        	    android:src="@drawable/img_default"
+        	    android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/pic"
+                android:scaleType="centerInside"
+                android:layout_gravity="left"
+                android:background="@null"
+        	    />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/userstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="英国留学帮|留学中"
+                android:textColor="@color/grey_light" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5天前"
+                android:textColor="@color/grey_light" />
+
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

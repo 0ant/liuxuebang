@@ -43,6 +43,10 @@ public class TopicAdapter extends BaseAdapter {
 		return 0;
 	}
 
+	public Context getmContext() {
+		return mContext;
+	}
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder v = null;

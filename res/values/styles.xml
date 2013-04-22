@@ -33,12 +33,30 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/actionbar_textsize</item>
     </style>
+      <style name="Widget.Liuxue.TextView.TopicTitle" parent="android:Widget.TextView">
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/black_light</item>
+        <item name="android:textSize">@dimen/actionbar_textsize</item>
+    </style>
     <style name="Widget.Liuxue.ActionBar.ImageButton" parent="android:Widget.ImageButton">
         <item name="android:background">@drawable/background_actionbar</item>
     </style>
      <style name="Widget.Liuxue.ActionBar.ImageButton.WriteGreen" parent="android:Widget.ImageButton">
         <item name="android:background">@drawable/background_imagebutton_writegreen</item>
     </style>
+
+     <style name="Widget.Liuxue.ListView" parent="android:Widget.Holo.ListView">
+          <item name="android:divider">@null</item>
+          <item name="android:dividerHeight">8dp</item>
+          <item name="android:fastScrollEnabled">true</item>
+          <item name="android:footerDividersEnabled">true</item>
+          <item name="android:headerDividersEnabled">true</item>
+         
+          <item name="android:paddingLeft">8dp</item>
+          <item name="android:paddingRight">8dp</item>
+          <item name="android:scrollbarStyle">outsideOverlay</item>
+          <item name="android:smoothScrollbar">true</item>
+</style>
      <style name="Widget.Liuxue.ProfectInfo.left" parent="android:Widget.Holo.TextView">
           <item name="android:gravity">left|center_vertical</item>
           

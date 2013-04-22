@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/write_light"
-
     android:paddingLeft="5dp"
     android:paddingTop="5dp" >
 
@@ -80,6 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:src="@drawable/material_group_join"
+        
+       
         style="@style/Widget.Liuxue.ActionBar.ImageButton.WriteGreen"
     />
 

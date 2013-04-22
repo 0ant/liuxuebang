@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.origwood.liuxue.adapter.GroupAdapter;
+import com.origwood.liuxue.R;
+import com.origwood.liuxue.adapter.TopicAdapter;
 
 public class FragmentSelect extends SherlockFragment {
 	@Override
@@ -20,14 +21,14 @@ public class FragmentSelect extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		ListView listView = new ListView(getActivity());
-		listView.setAdapter(new GroupAdapter(getActivity()));
-		return listView;
+
+		return inflater.inflate(R.layout.fragment_select, container, false);
 	}
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		ListView listView = (ListView) view.findViewById(R.id.list);
+		listView.setAdapter(new TopicAdapter(getActivity()));
 		super.onViewCreated(view, savedInstanceState);
 	}
 }
