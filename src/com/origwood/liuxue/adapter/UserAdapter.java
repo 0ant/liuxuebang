@@ -3,12 +3,14 @@ package com.origwood.liuxue.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.origwood.liuxue.R;
+import com.origwood.liuxue.common.UIHelper;
 
 public class UserAdapter extends BaseAdapter {
 	private Context mContext;
@@ -43,12 +45,24 @@ public class UserAdapter extends BaseAdapter {
 		return 0;
 	}
 
+	public Context getmContext() {
+		return mContext;
+	}
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder v = null;
 		if (convertView == null) {
 			v = new ViewHolder();
 			convertView = mLayoutInflater.inflate(R.layout.item_user, null);
+			convertView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					UIHelper.toUserSpace(mContext, null);
+
+				}
+			});
 			v.imgIcon = (ImageView) convertView.findViewById(R.id.icon);
 			v.imgLevel = (ImageView) convertView.findViewById(R.id.imgLevel);
 			v.tvLevel = (TextView) convertView.findViewById(R.id.level);

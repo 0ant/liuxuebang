@@ -3,12 +3,14 @@ package com.origwood.liuxue.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.origwood.liuxue.R;
+import com.origwood.liuxue.common.UIHelper;
 
 public class GroupAdapter extends BaseAdapter {
 	private Context mContext;
@@ -23,6 +25,10 @@ public class GroupAdapter extends BaseAdapter {
 		super();
 		this.mContext = mContext;
 		mLayoutInflater = LayoutInflater.from(mContext);
+	}
+
+	public Context getmContext() {
+		return mContext;
 	}
 
 	@Override
@@ -49,6 +55,14 @@ public class GroupAdapter extends BaseAdapter {
 		if (convertView == null) {
 			v = new ViewHolder();
 			convertView = mLayoutInflater.inflate(R.layout.item_group, null);
+			convertView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					UIHelper.toGroup(mContext, null);
+
+				}
+			});
 			v.imgIcon = (ImageView) convertView.findViewById(R.id.icon);
 			v.imgHot = (ImageView) convertView.findViewById(R.id.hot);
 			v.imgJionOrOut = (ImageView) convertView

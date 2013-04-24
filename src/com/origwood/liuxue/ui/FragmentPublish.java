@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.origwood.liuxue.adapter.GroupAdapter;
+import com.origwood.liuxue.R;
 
 public class FragmentPublish extends SherlockFragment {
 	@Override
@@ -20,9 +19,8 @@ public class FragmentPublish extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		ListView listView = new ListView(getActivity());
-		listView.setAdapter(new GroupAdapter(getActivity()));
-		return listView;
+
+		return inflater.inflate(R.layout.fragment_pub, container, false);
 	}
 
 	@Override

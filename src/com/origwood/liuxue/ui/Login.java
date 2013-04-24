@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.origwood.liuxue.R;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.service.AbsAppServiceOnFinished;
-import com.origwood.liuxue.util.Loger;
 
 @ContentView(R.layout.activity_login_register)
 public class Login extends Base implements OnClickListener {
@@ -31,13 +30,12 @@ public class Login extends Base implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_login_register);
-		// btnLogin = (Button) findViewById(R.id.login);
-		// btnRegister = (Button) findViewById(R.id.register);
+
 		btnLogin.setOnClickListener(this);
 		btnRegister.setOnClickListener(this);
-		etUsername.setText("testtest");
-		etPassword.setText("123456");
+		etUsername.setText("wanggang123");
+		etPassword.setText("wanggang");
+
 	}
 
 	@Override
@@ -60,33 +58,33 @@ public class Login extends Base implements OnClickListener {
 
 				@Override
 				public void onFailed(Result result) {
-					Loger.i("onFailt:" + result.getMsg());
-					Toast.makeText(getApplicationContext(), result.getMsg(),
-							Toast.LENGTH_SHORT).show();
-					super.onFailed(result);
+					showFaildedMessage(result, getApplicationContext());
+
 				}
 
 			}, this);
 
 			break;
 		case R.id.register:
-			service.checkIsRegister(etUsername.getText().toString(),
-					new AbsAppServiceOnFinished() {
+			service.register(etUsername.getText().toString(), etPassword
+					.getText().toString(), new AbsAppServiceOnFinished() {
 
-						@Override
-						public void onSuccess(Object object) {
+				@Override
+				public void onSuccess(Object object) {
 
-							super.onSuccess(object);
-						}
+					Toast.makeText(getApplicationContext(), "µÇÂ¼³É¹¦",
+							Toast.LENGTH_SHORT).show();
+					startActivity(new Intent(Login.this, Main.class));
 
-						@Override
-						public void onFailed(Result result) {
-							Toast.makeText(getApplicationContext(),
-									result.getMsg(), Toast.LENGTH_SHORT).show();
-							super.onFailed(result);
-						}
+				}
 
-					});
+				@Override
+				public void onFailed(Result result) {
+					showFaildedMessage(result, getApplicationContext());
+
+				}
+
+			}, this);
 			break;
 		default:
 			break;

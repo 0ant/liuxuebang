@@ -2,17 +2,16 @@ package com.origwood.liuxue.ui;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.origwood.liuxue.R;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.bean.User;
+import com.origwood.liuxue.common.UIHelper;
 import com.origwood.liuxue.service.AbsAppServiceOnFinished;
 
 @ContentView(R.layout.activity_user)
@@ -39,8 +38,7 @@ public class UserSpace extends Base implements OnClickListener {
 
 			@Override
 			public void onFailed(Result result) {
-				Toast.makeText(getApplicationContext(), result.getMsg(),
-						Toast.LENGTH_SHORT).show();
+				showFaildedMessage(result, getApplicationContext());
 				super.onFailed(result);
 			}
 
@@ -50,12 +48,10 @@ public class UserSpace extends Base implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Intent mIntent = null;
+
 		switch (v.getId()) {
 		case R.id.layout_fans:
-			mIntent = new Intent(this, MyFans.class);
-			mIntent.putExtra("title", "ÎÒµÄ·ÛË¿");
-			startActivity(mIntent);
+			UIHelper.toFans(UserSpace.this, null);
 			break;
 
 		default:

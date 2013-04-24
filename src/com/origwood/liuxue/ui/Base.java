@@ -7,10 +7,13 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
+import com.origwood.liuxue.AppContext;
 import com.origwood.liuxue.R;
 import com.origwood.liuxue.service.AppService;
+import com.origwood.liuxue.util.Loger;
 
 public class Base extends RoboActivity {
+	protected boolean DEBUG = AppContext.DEBUG;
 	@Inject
 	protected AppService service;
 
@@ -37,7 +40,10 @@ public class Base extends RoboActivity {
 		}
 		if (findViewById(R.id.title) != null) {
 			if (getIntent().getStringExtra("title") != null) {
+
 				TextView tvTitle = (TextView) findViewById(R.id.title);
+				if (DEBUG)
+					Loger.i("界面标题：" + tvTitle.getText());
 				tvTitle.setText(getIntent().getStringExtra("title"));
 			}
 		}

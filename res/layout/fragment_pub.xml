@@ -1,0 +1,151 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/write_light"
+    android:orientation="vertical" >
+<FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_actionbar"
+        android:gravity="center_vertical" >
+
+     
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Widget.Liuxue.ActionBar.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="发布" />
+
+        <ImageButton
+            android:id="@+id/submit"
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_submit" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/usericon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@null"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_usericon" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/material_topic_timeline" >
+
+            <ImageView
+                android:id="@+id/usertype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/material_topic_tag_follower" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageButton
+                    android:id="@+id/voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/ic_topic_voice" />
+
+                <TextView
+                    android:id="@+id/voice_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:text="12&apos;"
+                    android:textColor="@color/grey_light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_topic_detail"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="新西兰人热爱户外。我们在炎热的夏季和温暖的冬季游览美丽的国家公园、海滩与河流。您可以划皮艇、骑山地车、冲浪、攀绳下降、跳伞、与海豚共泳、探洞，当然，还有蹦极！" />
+
+                <ImageButton
+                    android:id="@+id/pic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="left"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/img_default" />
+            </LinearLayout>
+
+            
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/pub_bg" >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+              android:background="@drawable/background_imagebutton_writegreen"
+            android:src="@drawable/ic_pub_keyboard" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/pub_bg"
+            android:background="@drawable/bg_pub_button"
+            android:text="按住说话" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          
+             android:background="@drawable/background_imagebutton_writegreen"
+            android:src="@drawable/ic_pub_face" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:background="@drawable/background_imagebutton_writegreen"
+            android:src="@drawable/ic_pub_add" />
+    </LinearLayout>
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </GridView>
+
+</LinearLayout>

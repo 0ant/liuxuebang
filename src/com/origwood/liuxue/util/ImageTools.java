@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable;
 
 public class ImageTools {
 	private static ImageTools tools = new ImageTools();
+
 	public static ImageTools getInstance() {
 		if (tools == null) {
 			tools = new ImageTools();

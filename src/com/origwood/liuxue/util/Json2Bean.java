@@ -21,24 +21,44 @@ import com.origwood.liuxue.bean.Result;
  * 
  */
 public class Json2Bean {
-
+	/**
+	 * 解析请求结果 格式类似
+	 * 
+	 * <pre>
+	 * {"subResultType":0,"errorMap":{"field":"fromUserId","msg":"关注者不存在"}}
+	 * </pre>
+	 * 
+	 * @param content
+	 * @return
+	 */
 	public static Result getResult(String content) {
 		if (DEBUG)
-			Loger.i("result" + content);
+			Loger.i("result:" + content);
 		try {
 			JSONObject jsonObject = new JSONObject(content);
 			Result result = new Result();
-			result.setMsg(jsonObject.optString("msg"));
+			if (jsonObject.optJSONObject("errorMap") != null) {
+				result.setMsg(jsonObject.optJSONObject("errorMap").optString(
+						"msg"));
+			}
 			result.setSubResultType(jsonObject.optInt("subResultType"));
 			return result;
 		} catch (JSONException e) {
-
 			e.printStackTrace();
 		}
 		return null;
-
 	}
 
+	/**
+	 * 解析数据，把
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @param content
+	 * @param beanClass
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T getBeanFromHasResult(String content, Class<T> beanClass) {
 		if (DEBUG)

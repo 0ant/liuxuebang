@@ -3,7 +3,6 @@ package com.origwood.liuxue.ui;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,7 +10,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -22,11 +20,10 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.origwood.liuxue.R;
 
-public class Main extends SherlockFragmentActivity implements OnClickListener {
+public class Main extends SherlockFragmentActivity {
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
 	private TabsAdapter mTabsAdapter;
-	private View btnUser, btnRec;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +31,7 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 		setTheme(R.style.Theme_Sherlock_Light_NoActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		btnUser = findViewById(R.id.user);
-		btnRec = findViewById(R.id.recommendation);
-		btnUser.setOnClickListener(this);
-		btnRec.setOnClickListener(this);
+
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -188,18 +182,4 @@ public class Main extends SherlockFragmentActivity implements OnClickListener {
 		}
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.user:
-			startActivity(new Intent(this, UserSpace.class));
-			break;
-		case R.id.recommendation:
-			startActivity(new Intent(this, Recommendation.class));
-
-			break;
-		default:
-			break;
-		}
-	}
 }
