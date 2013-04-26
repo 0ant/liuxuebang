@@ -3,6 +3,7 @@ package com.origwood.liuxue.service;
 public class URLs {
 	private static final String HOST = "http://42.96.136.159/";
 	private static final String ACTION = "app/";
+	/**** 用户模块开始 ***/
 	public static final String LOGIN = HOST + ACTION + "subUserLogin?";
 	public static final String USERINFO = HOST + ACTION + "user/detail";
 	public static final String CHECKISREGISTER = HOST + ACTION
@@ -13,4 +14,10 @@ public class URLs {
 			+ "user/subInfoSetting";
 	public static final String GETUSERALLSTAGE = HOST + ACTION
 			+ "getUserAllStage";
+	/*********** 用户模块结束 *******/
+	/*********** 帮模块开始 *********/
+	public static final String GROUP_ALLGROUP = HOST + ACTION + "groups?";
+	public static final String getGroupById = HOST + ACTION + "getGroupInfo?";
+	/*********** 帮模块结束 *********/
+
 }

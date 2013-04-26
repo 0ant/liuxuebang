@@ -3,6 +3,7 @@ package com.origwood.liuxue.service;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.origwood.liuxue.AppContext;
 import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.util.Loger;
 
@@ -27,7 +28,8 @@ public abstract class AbsAppServiceOnFinished implements AppServiceOnFinished {
 	}
 
 	public void showFaildedMessage(Result result, Context context) {
-		Loger.i("onFailt:" + result.getMsg());
+		if (AppContext.DEBUG)
+			Loger.i("onFailt:" + result.getMsg());
 		Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
 	}
 

@@ -21,7 +21,7 @@ public class Base extends RoboActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		setTheme(android.R.style.Theme_NoTitleBar);
 		super.onCreate(savedInstanceState);
-
+		service.setContext(getApplicationContext());
 	}
 
 	@Override

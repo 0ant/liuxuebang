@@ -1,6 +1,15 @@
 package com.origwood.liuxue.service;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
@@ -9,6 +18,8 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,10 +28,16 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
+import com.origwood.liuxue.AppContext;
 import com.origwood.liuxue.bean.Result;
+import com.origwood.liuxue.bean.ResultGroup;
+import com.origwood.liuxue.bean.ResultGroupList;
 import com.origwood.liuxue.bean.User;
+import com.origwood.liuxue.common.StringUtils;
 import com.origwood.liuxue.util.ImageTools;
 import com.origwood.liuxue.util.Json2Bean;
+import com.origwood.liuxue.util.Jsoner;
+import com.origwood.liuxue.util.Loger;
 
 /**
  * 所有业务方法
@@ -30,8 +47,15 @@ import com.origwood.liuxue.util.Json2Bean;
  */
 @Singleton
 public class AppService {
+	public static final int NETTYPE_WIFI = 0x01;
+	public static final int NETTYPE_CMWAP = 0x02;
+	public static final int NETTYPE_CMNET = 0x03;
+	public static final int PAGE_SIZE = 20;// 默认分页大小
+	private static final int CACHE_TIME = 60 * 60000;// 缓存失效时间
 	private Context context;
 	private static final String DUG_TAG = "AppService";
+	private static Result defaultOnFailureResult;
+	private static AsyncHttpClient client = new AsyncHttpClient();
 
 	public AppService() {
 		super();
@@ -43,14 +67,28 @@ public class AppService {
 		this.context = context;
 	}
 
-	static AsyncHttpClient client = new AsyncHttpClient();
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
+	public Result getDefaultOnFailureResult() {
+		if (defaultOnFailureResult == null) {
+			defaultOnFailureResult = new Result();
+			defaultOnFailureResult.setMsg("请检查网络连接");
+		}
+		return defaultOnFailureResult;
+	}
 
 	public static void stop(Context context, boolean b) {
 		client.cancelRequests(context, b);
 	}
 
 	public void modifyPwd(String newPwd, String oldPwd,
-			final AppServiceOnFinished a, final Context context) {
+			final AppServiceOnFinished onFinished, final Context context) {
 		RequestParams params = new RequestParams();
 		params.put("newPwd", newPwd);
 		params.put("oldPwd", oldPwd);
@@ -59,23 +97,20 @@ public class AppService {
 
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
-				Result result = new Result();
-				result.setMsg("连接错误");
-				a.onFailed(result);
-				Log.e(DUG_TAG, arg0 + arg1);
+				onFinished.onFailed(getDefaultOnFailureResult());
 			}
 
 			@Override
 			public void onSuccess(String response) {
 				Result result = Json2Bean.getResult(response);
 				if (result.getSubResultType() == 0) {
-					a.onFailed(result);
+					onFinished.onFailed(result);
 				} else {
 					PersistentCookieStore myCookieStore = new PersistentCookieStore(
 							context);
 					client.setCookieStore(null);
 					client.setCookieStore(myCookieStore);
-					a.onSuccess(result);
+					onFinished.onSuccess(result);
 				}
 			}
 
@@ -115,7 +150,7 @@ public class AppService {
 	 *            上下文对象
 	 */
 	public void login(String username, String password,
-			final AppServiceOnFinished a, final Context context) {
+			final AppServiceOnFinished onFinished, final Context context) {
 		RequestParams params = new RequestParams();
 		params.put("loginName", username);
 		params.put("password", password);
@@ -126,24 +161,20 @@ public class AppService {
 
 				Result result = Json2Bean.getResult(response);
 				if (result.getSubResultType() == 0) {
-					a.onFailed(result);
+					onFinished.onFailed(result);
 
 				} else {
 					PersistentCookieStore myCookieStore = new PersistentCookieStore(
 							context);
 					client.setCookieStore(myCookieStore);
-					a.onSuccess(result);
+					onFinished.onSuccess(result);
 				}
 			}
 
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
 
-				Result result = new Result();
-				result.setMsg("连接出错");
-				a.onFailed(result);
-
-				super.onFailure(arg0, arg1);
+				onFinished.onFailed(getDefaultOnFailureResult());
 			}
 
 		});
@@ -204,10 +235,7 @@ public class AppService {
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
 
-				Result result = new Result();
-				result.setMsg("请检查网络连接");
-				onFinished.onFailed(result);
-				super.onFailure(arg0, arg1);
+				onFinished.onFailed(getDefaultOnFailureResult());
 			}
 
 		});
@@ -240,6 +268,17 @@ public class AppService {
 				});
 	}
 
+	/**
+	 * 设置用户信息
+	 * 
+	 * @param usericon
+	 * @param sex
+	 * @param nickname
+	 * @param stage
+	 * @param phone
+	 * @param onFinished
+	 * @param context
+	 */
 	public void subInfoSetting(Drawable usericon, String sex, String nickname,
 			String stage, String phone, final AppServiceOnFinished onFinished,
 			final Context context) {
@@ -255,8 +294,7 @@ public class AppService {
 
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
-				Log.e(DUG_TAG, arg0 + arg1);
-				onFinished.onFailed(null);
+				onFinished.onFailed(getDefaultOnFailureResult());
 			}
 
 			@Override
@@ -273,15 +311,19 @@ public class AppService {
 		});
 	}
 
+	/**
+	 * 获得所有用户类别
+	 * 
+	 * @param context
+	 * @param onFinished
+	 */
 	public void getUserAllStage(final Context context,
 			final AbsAppServiceOnFinished onFinished) {
 		final Result result = new Result();
 		client.get(URLs.GETUSERALLSTAGE, new AsyncHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
-				Log.e(DUG_TAG, "网络异常");
-				result.setMsg("网络异常");
-				onFinished.onFailed(result);
+				onFinished.onFailed(getDefaultOnFailureResult());
 			}
 
 			@Override
@@ -313,4 +355,241 @@ public class AppService {
 		});
 	}
 
+	/**
+	 * 获得帮列表
+	 * 
+	 * @param onFinished
+	 * @param pageIndex
+	 * @param isRefresh
+	 */
+	public void getAllGroup(final AbsAppServiceOnFinished onFinished,
+			int pageIndex, boolean isRefresh) {
+
+		final String key = "AllGroup_" + pageIndex + "_" + PAGE_SIZE;
+		if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+			RequestParams params = new RequestParams();
+			params.put("page", pageIndex + "");
+			params.put("pageSize", PAGE_SIZE + "");
+			params.put("sortField", "DATE");
+			client.post(URLs.GROUP_ALLGROUP, params,
+					new AsyncHttpResponseHandler() {
+
+						@Override
+						public void onFailure(Throwable arg0, String arg1) {
+
+							onFinished.onFailed(getDefaultOnFailureResult());
+						}
+
+						@Override
+						public void onSuccess(String arg0) {
+
+							ResultGroupList data = Jsoner.parseObjectAgency(
+									arg0, ResultGroupList.class);
+							// 保存到缓存
+							saveObject(data, key);
+							onFinished.onSuccess(data);
+						}
+
+					});
+		} else {
+			// 从缓存读取
+			ResultGroupList data = (ResultGroupList) readObject(key);
+			if (data == null)
+				data = new ResultGroupList();
+
+			onFinished.onSuccess(data);
+		}
+
+	}
+
+	public void getGroupById(String groupId, boolean isRefresh,
+			final AbsAppServiceOnFinished onFinished) {
+		final String key = "getGroupById_" + groupId;
+		if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+			RequestParams params = new RequestParams();
+			params.put("groupId", groupId);
+			client.post(URLs.getGroupById, params,
+					new AsyncHttpResponseHandler() {
+
+						@Override
+						public void onFailure(Throwable arg0, String arg1) {
+
+							onFinished.onFailed(getDefaultOnFailureResult());
+						}
+
+						@Override
+						public void onSuccess(String arg0) {
+
+							onFinished.onSuccess(Jsoner.parseObjectAgency(arg0,
+									ResultGroup.class));
+						}
+
+					});
+		} else {
+			// 从缓存读取
+			onFinished.onSuccess(getCache(key, ResultGroup.class));
+
+		}
+	}
+
+	/**
+	 * 从缓存获取对象
+	 * 
+	 * @param key
+	 *            健
+	 * @param clazz
+	 *            类的字节码
+	 * @return
+	 */
+	public <T> T getCache(String key, Class<T> clazz) {
+		@SuppressWarnings("unchecked")
+		T bean = (T) readObject(key);
+		if (bean == null) {
+			try {
+				bean = clazz.newInstance();
+			} catch (InstantiationException e) {
+
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+
+				e.printStackTrace();
+			}
+		}
+		if (AppContext.DEBUG)
+			Loger.i("从缓存获取数据:key:" + key + "data:" + bean);
+		return bean;
+	}
+
+	/**
+	 * 检测网络是否可用
+	 * 
+	 * @return
+	 */
+	public boolean isNetworkConnected() {
+		ConnectivityManager cm = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo ni = cm.getActiveNetworkInfo();
+		return ni != null && ni.isConnectedOrConnecting();
+	}
+
+	/**
+	 * 获取当前网络类型
+	 * 
+	 * @return 0：没有网络 1：WIFI网络 2：WAP网络 3：NET网络
+	 */
+	public int getNetworkType() {
+		int netType = 0;
+		ConnectivityManager connectivityManager = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+		if (networkInfo == null) {
+			return netType;
+		}
+		int nType = networkInfo.getType();
+		if (nType == ConnectivityManager.TYPE_MOBILE) {
+			String extraInfo = networkInfo.getExtraInfo();
+			if (!StringUtils.isEmpty(extraInfo)) {
+				if (extraInfo.toLowerCase().equals("cmnet")) {
+					netType = NETTYPE_CMNET;
+				} else {
+					netType = NETTYPE_CMWAP;
+				}
+			}
+		} else if (nType == ConnectivityManager.TYPE_WIFI) {
+			netType = NETTYPE_WIFI;
+		}
+		return netType;
+	}
+
+	/**
+	 * 判断缓存数据是否可读
+	 * 
+	 * @param cachefile
+	 * @return
+	 */
+	private boolean isReadDataCache(String cachefile) {
+		return readObject(cachefile) != null;
+	}
+
+	/**
+	 * 保存对象
+	 * 
+	 * @param ser
+	 * @param file
+	 * @throws IOException
+	 */
+	public boolean saveObject(Serializable ser, String file) {
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		try {
+			fos = context.openFileOutput(file, Context.MODE_PRIVATE);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(ser);
+			oos.flush();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				oos.close();
+			} catch (Exception e) {
+			}
+			try {
+				fos.close();
+			} catch (Exception e) {
+			}
+		}
+	}
+
+	/**
+	 * 读取对象
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 */
+	public Serializable readObject(String file) {
+		if (!isExistDataCache(file))
+			return null;
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		try {
+			fis = context.openFileInput(file);
+			ois = new ObjectInputStream(fis);
+			return (Serializable) ois.readObject();
+		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
+			// 反序列化失败 - 删除缓存文件
+			if (e instanceof InvalidClassException) {
+				File data = context.getFileStreamPath(file);
+				data.delete();
+			}
+		} finally {
+			try {
+				ois.close();
+			} catch (Exception e) {
+			}
+			try {
+				fis.close();
+			} catch (Exception e) {
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 判断缓存是否存在
+	 * 
+	 * @param cachefile
+	 * @return
+	 */
+	private boolean isExistDataCache(String cachefile) {
+		boolean exist = false;
+		File data = context.getFileStreamPath(cachefile);
+		if (data.exists())
+			exist = true;
+		return exist;
+	}
 }

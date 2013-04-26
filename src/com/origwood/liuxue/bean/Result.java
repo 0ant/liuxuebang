@@ -1,8 +1,8 @@
 package com.origwood.liuxue.bean;
 
 public class Result {
-	private String msg;
-	private int subResultType;
+	protected String msg;
+	protected int subResultType;
 
 	public String getMsg() {
 		return msg;
@@ -18,6 +18,11 @@ public class Result {
 
 	public void setSubResultType(int subResultType) {
 		this.subResultType = subResultType;
+	}
+
+	@Override
+	public String toString() {
+		return "Result [msg=" + msg + ", subResultType=" + subResultType + "]";
 	}
 
 }

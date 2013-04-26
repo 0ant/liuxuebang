@@ -105,6 +105,7 @@ public class UIHelper {
 
 	public static void toGroup(Context context, String groupId) {
 		Intent mIntent = new Intent(context, GroupSpace.class);
+		mIntent.putExtra("groupId", groupId);
 		context.startActivity(mIntent);
 	}
 
