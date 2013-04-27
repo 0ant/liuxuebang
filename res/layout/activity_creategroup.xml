@@ -47,6 +47,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/bg_item"
             android:orientation="horizontal" >
 
@@ -66,25 +67,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_item"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_guoup_location" />
-
-            <EditText
-                android:id="@+id/group_location"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/Widget.Liuxue.EditText"
-                android:hint="位置" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/bg_item"
             android:orientation="horizontal" >
 
@@ -97,6 +80,7 @@
                 android:id="@+id/group_descript"
                 android:layout_width="match_parent"
                 android:layout_height="100dip"
+                android:paddingTop="5dp"
                 style="@style/Widget.Liuxue.EditText"
                 android:gravity="top"
                 android:hint="说明" />
