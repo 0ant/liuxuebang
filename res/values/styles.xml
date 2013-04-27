@@ -10,7 +10,6 @@
 
     <style name="Widget.Liuxue.Button.Green" parent="@style/Widget.Liuxue.Button">
         <item name="android:background">@drawable/bg_button_green</item>
-        
     </style>
 
     <style name="Widget.Liuxue.Button.Blue" parent="@style/Widget.Liuxue.Button">
@@ -20,50 +19,56 @@
     <style name="Widght.Liuxue.Divide" parent="@style/AppTheme">
         <item name="android:background">@drawable/material_divide</item>
         <item name="android:layout_marginBottom">10dp</item>
-         <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
     </style>
 
     <style name="Widght.Liuxue.TextView.Small" parent="android:Widget.Holo.TextView">
-      
         <item name="android:textColor">#efefef</item>
         <item name="android:textSize">10sp</item>
     </style>
+
     <style name="Widget.Liuxue.ActionBar.TextView" parent="android:Widget.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/actionbar_textsize</item>
     </style>
-      <style name="Widget.Liuxue.TextView.TopicTitle" parent="android:Widget.TextView">
+
+    <style name="Widget.Liuxue.TextView.TopicTitle" parent="android:Widget.TextView">
         <item name="android:gravity">left</item>
         <item name="android:textColor">@color/black_light</item>
         <item name="android:textSize">@dimen/actionbar_textsize</item>
     </style>
+
     <style name="Widget.Liuxue.ActionBar.ImageButton" parent="android:Widget.ImageButton">
         <item name="android:background">@drawable/background_actionbar</item>
     </style>
-     <style name="Widget.Liuxue.ActionBar.ImageButton.WriteGreen" parent="android:Widget.ImageButton">
+
+    <style name="Widget.Liuxue.ActionBar.ImageButton.WriteGreen" parent="android:Widget.ImageButton">
         <item name="android:background">@drawable/background_imagebutton_writegreen</item>
     </style>
 
-     <style name="Widget.Liuxue.ListView" parent="android:Widget.Holo.ListView">
-          <item name="android:divider">@null</item>
-          <item name="android:dividerHeight">8dp</item>
-          <item name="android:fastScrollEnabled">true</item>
-          <item name="android:footerDividersEnabled">true</item>
-          <item name="android:headerDividersEnabled">true</item>
-         
-          <item name="android:paddingLeft">8dp</item>
-          <item name="android:paddingRight">8dp</item>
-          <item name="android:scrollbarStyle">outsideOverlay</item>
-          <item name="android:smoothScrollbar">true</item>
-</style>
-     <style name="Widget.Liuxue.ProfectInfo.left" parent="android:Widget.Holo.TextView">
-          <item name="android:gravity">left|center_vertical</item>
-          
-          <item name="android:textColor">#000000</item>
-     </style>
-     <style name="Widget.Liuxue.ProfectInfo.right" parent="android:Widget.Holo.EditText">
-          <item name="android:background">@null</item>
-          <item name="android:password">true</item>
-     </style>
+    <style name="Widget.Liuxue.ListView" parent="android:Widget.Holo.ListView">
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">8dp</item>
+        <item name="android:fastScrollEnabled">true</item>
+        <item name="android:footerDividersEnabled">true</item>
+        <item name="android:headerDividersEnabled">true</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:smoothScrollbar">true</item>
+    </style>
+
+    <style name="Widget.Liuxue.ProfectInfo.left" parent="android:Widget.Holo.TextView">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Widget.Liuxue.EditText" parent="android:Widget.Holo.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">bottom</item>y
+    </style>
+
 </resources>

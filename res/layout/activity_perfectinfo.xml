@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/write_light" >
+            android:background="@drawable/bg_item" >
 
                 <TextView
                     style="@style/Widget.Liuxue.ProfectInfo.left"
@@ -32,7 +32,6 @@
 
                 <ImageView
                     android:id="@+id/pi_icon"
-                    style="@style/Widget.Liuxue.ProfectInfo.right"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="right"
@@ -43,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/write_light"
+            android:background="@drawable/bg_item"
             android:paddingLeft="10dp" >
 
             <TextView
@@ -69,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/write_light"
+            android:background="@drawable/bg_item"
             android:paddingLeft="10dp" >
 
             <TextView
@@ -95,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/write_light"
+            android:background="@drawable/bg_item"
             android:paddingLeft="10dp" >
 
             <TextView
@@ -112,7 +111,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="right|center_vertical"
-                android:text="WILL"
+                android:text="即将出国"
                 android:textColor="#000000" 
                 android:background="@null" />
         </LinearLayout>
@@ -121,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/write_light"
+            android:background="@drawable/bg_item"
             android:paddingLeft="10dp" >
 
             <TextView
