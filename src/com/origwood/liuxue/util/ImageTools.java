@@ -30,14 +30,14 @@ public class ImageTools {
 
 	// ½«InputStream×ª»»³Ébyte[]
 	public byte[] InputStream2Bytes(InputStream is) {
-		String str = "";
+		StringBuilder str = new StringBuilder();
 		byte[] readByte = new byte[1024];
 		int readCount = -1;
 		try {
 			while ((readCount = is.read(readByte, 0, 1024)) != -1) {
-				str += new String(readByte).trim();
+				str.append(readByte);
 			}
-			return str.getBytes();
+			return new String(str).getBytes();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

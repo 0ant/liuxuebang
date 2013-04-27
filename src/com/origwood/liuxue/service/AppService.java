@@ -1,6 +1,5 @@
 package com.origwood.liuxue.service;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -34,7 +32,6 @@ import com.origwood.liuxue.bean.ResultGroup;
 import com.origwood.liuxue.bean.ResultGroupList;
 import com.origwood.liuxue.bean.User;
 import com.origwood.liuxue.common.StringUtils;
-import com.origwood.liuxue.util.ImageTools;
 import com.origwood.liuxue.util.Json2Bean;
 import com.origwood.liuxue.util.Jsoner;
 import com.origwood.liuxue.util.Loger;
@@ -87,6 +84,14 @@ public class AppService {
 		client.cancelRequests(context, b);
 	}
 
+	/**
+	 * 密码修改
+	 * 
+	 * @param newPwd
+	 * @param oldPwd
+	 * @param a
+	 * @param context
+	 */
 	public void modifyPwd(String newPwd, String oldPwd,
 			final AppServiceOnFinished onFinished, final Context context) {
 		RequestParams params = new RequestParams();
@@ -269,7 +274,7 @@ public class AppService {
 	}
 
 	/**
-	 * 设置用户信息
+	 * 更新个人资料
 	 * 
 	 * @param usericon
 	 * @param sex
@@ -279,13 +284,21 @@ public class AppService {
 	 * @param onFinished
 	 * @param context
 	 */
-	public void subInfoSetting(Drawable usericon, String sex, String nickname,
+
+	public void subInfoSetting(File usericon, String sex, String nickname,
 			String stage, String phone, final AppServiceOnFinished onFinished,
 			final Context context) {
 		Log.i(DUG_TAG, sex + stage);
 		RequestParams params = new RequestParams();
-		byte[] icon = ImageTools.getInstance().Drawable2Bytes(usericon);
-		params.put("headImgFile", new ByteArrayInputStream(icon), "icon.png");
+		// byte[] icon = ImageTools.getInstance().Drawable2Bytes(usericon);
+		// params.put("headImgFile", new ByteArrayInputStream(icon),
+		// "icon.png");
+		try {
+			params.put("headImgFile", usericon);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		params.put("sex", sex);
 		params.put("nickName", nickname);
 		params.put("stage", stage);
@@ -312,7 +325,7 @@ public class AppService {
 	}
 
 	/**
-	 * 获得所有用户类别
+	 * 获取所有留学阶段
 	 * 
 	 * @param context
 	 * @param onFinished
@@ -591,5 +604,63 @@ public class AppService {
 		if (data.exists())
 			exist = true;
 		return exist;
+	}
+
+	/**
+	 * 创建帮
+	 * 
+	 * @param name
+	 * @param descript
+	 * @param file
+	 * @param OnFinished
+	 */
+	public void subCreateGroupApply(String name, String descript, File file,
+			final AbsAppServiceOnFinished OnFinished) {
+		RequestParams params = new RequestParams();
+		params.put("name", name);
+		params.put("note", descript);
+		try {
+			params.put("imgFile", file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Log.i(DUG_TAG, URLs.SUBCREATEGROUPAPPLY);
+		client.post(URLs.SUBCREATEGROUPAPPLY, params,
+				new AsyncHttpResponseHandler() {
+
+					@Override
+					public void onFailure(Throwable arg0, String content) {
+						Log.e(DUG_TAG, arg0 + content);
+						Result result = new Result();
+						result.setMsg("连接异常");
+						OnFinished.onFailed(result);
+					}
+
+					@Override
+					public void onSuccess(int arg0, String content) {
+						Log.i(DUG_TAG, arg0 + content);
+						if (arg0 != 200) {
+							OnFinished.onFailed(new Result("网络错误，保存失败"));
+						}
+						try {
+							JSONObject jsonObject = new JSONObject(content);
+							int subResultType = jsonObject
+									.getInt("subResultType");
+							if (subResultType == 1) {
+								OnFinished.onFailed(new Result("保存成功"));
+								return;
+							}
+							JSONObject errorMap = jsonObject
+									.getJSONObject("errorMap");
+							String msg = errorMap.getString("msg");
+							OnFinished.onFailed(new Result(msg));
+						} catch (JSONException e) {
+							Log.e(DUG_TAG, "返回到json格式错误");
+							e.printStackTrace();
+						}
+						// OnFinished.onSuccess(result);
+					}
+
+				});
 	}
 }

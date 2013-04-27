@@ -10,7 +10,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
- <!-- 这个权限人人网用 -->
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+ <!-- SD卡读写权限 -->
+    <!-- 这个权限人人网用 -->
 
     <application
         android:icon="@drawable/ic_icon"
@@ -29,9 +34,12 @@
         <activity android:name=".ui.Recommendation" />
         <activity android:name=".ui.GroupSpace" />
         <activity android:name=".ui.TopicDetail" />
-         <activity android:name=".ui.Publish" />
+        <activity android:name=".ui.Publish" />
+
+        <!-- zhxy -->
         <activity android:name=".ui.ModifyPwd" />
         <activity android:name=".ui.PerfectInfo" />
+        <activity android:name=".ui.CreateGroup" />
 
         <!-- 腾讯接口接入 -->
 

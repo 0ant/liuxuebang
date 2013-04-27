@@ -18,6 +18,9 @@ public class URLs {
 	/*********** 帮模块开始 *********/
 	public static final String GROUP_ALLGROUP = HOST + ACTION + "groups?";
 	public static final String getGroupById = HOST + ACTION + "getGroupInfo?";
+
+	public static final String SUBCREATEGROUPAPPLY = HOST + ACTION
+			+ "user/subCreateGroupApply";
 	/*********** 帮模块结束 *********/
 
 }
