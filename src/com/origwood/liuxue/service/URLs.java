@@ -13,4 +13,6 @@ public class URLs {
 			+ "user/subInfoSetting";
 	public static final String GETUSERALLSTAGE = HOST + ACTION
 			+ "getUserAllStage";
+	public static final String SUBCREATEGROUPAPPLY = HOST + ACTION
+			+ "user/subCreateGroupApply";
 }

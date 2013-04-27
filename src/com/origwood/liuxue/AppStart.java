@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +13,11 @@ import android.widget.Toast;
 
 import com.origwood.liuxue.common.UIHelper;
 import com.origwood.liuxue.keep.AccessTokenKeeper;
+import com.origwood.liuxue.net.Test;
 import com.origwood.liuxue.ui.Base;
+import com.origwood.liuxue.ui.CreateGroup;
+import com.origwood.liuxue.ui.Login;
+import com.origwood.liuxue.ui.PerfectInfo;
 import com.renren.api.connect.android.Renren;
 import com.renren.api.connect.android.exception.RenrenAuthError;
 import com.renren.api.connect.android.view.RenrenAuthListener;
@@ -195,7 +200,9 @@ public class AppStart extends Base implements OnClickListener {
 			renren.authorize(this, null, listener, 1);
 			break;
 		case R.id.login:
-			UIHelper.toLogin(AppStart.this);
+//			UIHelper.toLogin(AppStart.this);
+			Test.fadeLogin(service,this);
+			startActivity(new Intent(AppStart.this,PerfectInfo.class));
 			break;
 
 		default:

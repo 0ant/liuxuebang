@@ -1,6 +1,8 @@
 package com.origwood.liuxue.service;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
@@ -240,13 +242,19 @@ public class AppService {
 				});
 	}
 
-	public void subInfoSetting(Drawable usericon, String sex, String nickname,
+	public void subInfoSetting(File usericon, String sex, String nickname,
 			String stage, String phone, final AppServiceOnFinished onFinished,
 			final Context context) {
 		Log.i(DUG_TAG, sex + stage);
 		RequestParams params = new RequestParams();
-		byte[] icon = ImageTools.getInstance().Drawable2Bytes(usericon);
-		params.put("headImgFile", new ByteArrayInputStream(icon), "icon.png");
+//		byte[] icon = ImageTools.getInstance().Drawable2Bytes(usericon);
+//		params.put("headImgFile", new ByteArrayInputStream(icon), "icon.png");
+		try {
+			params.put("headImgFile", usericon);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		params.put("sex", sex);
 		params.put("nickName", nickname);
 		params.put("stage", stage);
@@ -310,6 +318,33 @@ public class AppService {
 					e.printStackTrace();
 				}
 			}
+		});
+	}
+
+	public void subCreateGroupApply(String name, String descript, File file,
+			final AbsAppServiceOnFinished OnFinished) {
+		RequestParams params=new RequestParams();
+		params.put("name", name);
+		params.put("note", descript);
+		try {
+			params.put("imgFile", file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		client.post(URLs.CHECKISREGISTER, params, new AsyncHttpResponseHandler(){
+
+			@Override
+			public void onFailure(Throwable arg0, String content) {
+				Log.e(DUG_TAG, arg0+content);
+				Result result=Json2Bean.getResult(content);
+				OnFinished.onFailed(result);
+			}
+
+			@Override
+			public void onSuccess(int arg0, String content) {
+				OnFinished.onSuccess("创建成功");
+			}
+			
 		});
 	}
 
