@@ -8,6 +8,7 @@ import java.util.Set;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,7 +39,7 @@ import com.origwood.liuxue.bean.Result;
 import com.origwood.liuxue.service.AbsAppServiceOnFinished;
 
 @ContentView(R.layout.activity_perfectinfo)
-public class PerfectInfo extends Base implements View.OnClickListener {
+public class PerfectInfo extends GetPhote implements View.OnClickListener {
 
 	private final static String DUG_TAG = "PerfectInfo";
 	@InjectView(R.id.pi_icon)
@@ -53,39 +54,59 @@ public class PerfectInfo extends Base implements View.OnClickListener {
 	private TextView mPhomeTextView;
 	@InjectView(R.id.title)
 	private TextView mTitle;
-	private IconSetWin selectWindow;
 	private LinkedHashMap<String, String> stageHashMap=null;
+	private AlertDialog mProgress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		init();
+	}
+
+	private void init() {
 		mTitle.setText("信息完善页面");
+		//测试用
+		mSexTextView.setText("男");
+		mNicknameTextView.setText("wewe");
+//		mStageTextView.setText("即将出国");
+		//注册事件
 		mIconImageView.setOnClickListener(this);
 		mSexTextView.setOnClickListener(this);
 		mNicknameTextView.setOnClickListener(this);
 		mStageTextView.setOnClickListener(this);
 		mPhomeTextView.setOnClickListener(this);
 	}
-
+	public void dismissProgress(){
+		if(mProgress!=null){
+			mProgress.dismiss();
+			mProgress=null;
+		}
+	}
 	public void update(View view) {
-		Drawable useicon = mIconImageView.getDrawable();
-		String sex ="F";
+		
+		view.setFocusable(false);
+		dismissProgress();
+		mProgress=CustomProgressDialog.create(this, "资料更新中");
+		mProgress.show();
+		String sex ="false";
 		if(mSexTextView.getText().toString().trim().equals("男"))
-			sex = "M";
+			sex = "true";
 		String nickname = mNicknameTextView.getText().toString().trim();
 		String stage = mStageTextView.getText().toString().trim();
 		String phone = mPhomeTextView.getText().toString().trim();
-		service.subInfoSetting(useicon, sex, nickname, stageHashMap.get(stage), phone,
+		service.subInfoSetting(getImageFile(), sex, nickname, stageHashMap.get(stage), phone,
 				new AbsAppServiceOnFinished() {
 
 					@Override
 					public void onSuccess(Object object) {
+						dismissProgress();
 						Toast.makeText(PerfectInfo.this, "更新成功",
 								Toast.LENGTH_SHORT).show();
 					}
 
 					@Override
 					public void onFailed(Result result) {
+						dismissProgress();
 						Toast.makeText(PerfectInfo.this, "更新失败",
 								Toast.LENGTH_SHORT).show();
 					}
@@ -94,10 +115,14 @@ public class PerfectInfo extends Base implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		
+		
+		
 		final EditText value = new EditText(this);
 		switch (v.getId()) {
 		case R.id.pi_icon:
-			setUsericon();
+			getPhoto();
+//			setUsericon();
 			break;
 		case R.id.pi_nicknanme:
 			new AlertDialog.Builder(this)
@@ -189,92 +214,11 @@ public class PerfectInfo extends Base implements View.OnClickListener {
 			}});
 	}
 
-	private void setUsericon() {
-		selectWindow = new IconSetWin(this, itemsOnClick);
-		selectWindow.showAtLocation(mIconImageView, Gravity.BOTTOM
-				| Gravity.CENTER_HORIZONTAL, 0, 0);
-	}
-
-	private OnClickListener itemsOnClick = new OnClickListener() {
-
-		@Override
-		public void onClick(View v) {
-			selectWindow.dismiss();
-			switch (v.getId()) {
-			case R.id.pi_selectpic:// 选择照片
-				Intent getImage = new Intent(Intent.ACTION_GET_CONTENT);
-				getImage.addCategory(Intent.CATEGORY_OPENABLE);
-				getImage.setType("image/jpeg");
-				startActivityForResult(getImage, 0);
-				break;
-			case R.id.pi_takepic:// 拍摄照片
-				Intent getImageByCamera = new Intent(
-						"android.media.action.IMAGE_CAPTURE");
-				startActivityForResult(getImageByCamera, 1);
-				break;
-			case R.id.pi_cancle:// 取消
-				if (selectWindow.isShowing())
-					selectWindow.dismiss();
-				break;
-
-			default:
-				break;
-			}
-		}
-	};
-
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-
-		ContentResolver contentResolver = getContentResolver();
-		Bitmap myBitmap = null;
-		/**
-		 * 因为两种方式都用到了startActivityForResult方法，这个方法执行完后都会执行onActivityResult方法，
-		 * 所以为了区别到底选择了那个方式获取图片要进行判断
-		 * ，这里的requestCode跟startActivityForResult里面第二个参数对应
-		 */
-
-		if (requestCode == 0) {
-
-			try {
-				Uri selectedImage = data.getData();
-				String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
-				Cursor cursor = getContentResolver().query(selectedImage,
-						filePathColumn, null, null, null);
-				cursor.moveToFirst();
-
-				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-				String picturePath = cursor.getString(columnIndex);
-				cursor.close();
-				mIconImageView.setImageBitmap(BitmapFactory
-						.decodeFile(picturePath));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} else if (requestCode == 1) {
-			try {
-				Bundle extras = data.getExtras();
-				myBitmap = (Bitmap) extras.get("data");
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				myBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			mIconImageView.setImageBitmap(myBitmap);
-		}
-	}
-
-	public static Bitmap getPicFromBytes(byte[] bytes,
-			BitmapFactory.Options opts) {
-		if (bytes != null)
-			if (opts != null)
-				return BitmapFactory.decodeByteArray(bytes, 0, bytes.length,
-						opts);
-			else
-				return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-		return null;
+	protected void setConf() {
+		folderName="user_pic";
+		defaultPicName="ic_usericon.png";
+		picName="user_icon.jpg";
+		imageView=mIconImageView;
 	}
 }
