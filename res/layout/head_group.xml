@@ -27,7 +27,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/nikename"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="加州留学帮" />
@@ -51,14 +51,10 @@
                 android:layout_height="wrap_content"
                  android:orientation="vertical"
                  >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_group_people" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_group_people"/>
 
                 <TextView
-                    android:id="@+id/join"
+                    android:id="@+id/useramount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1231"
@@ -78,7 +74,7 @@
                     android:src="@drawable/ic_group_pic" />
 
                 <TextView
-                    android:id="@+id/attention"
+                    android:id="@+id/picamount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1231"
@@ -95,7 +91,7 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:id="@+id/imgLevel"
+            android:id="@+id/officer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_group_office" 
@@ -104,13 +100,13 @@
 
         <ImageView
             
-            android:id="@+id/imgLevel"
+          android:id="@+id/img_joined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_group_join" />
 
         <TextView
-            android:id="@+id/attention"
+            android:id="@+id/tv_joined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="已加入"

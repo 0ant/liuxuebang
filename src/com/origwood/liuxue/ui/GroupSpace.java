@@ -3,12 +3,15 @@ package com.origwood.liuxue.ui;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.origwood.liuxue.R;
 import com.origwood.liuxue.adapter.TopicAdapter;
@@ -24,12 +27,19 @@ public class GroupSpace extends Base implements OnClickListener,
 	ListView mListView;
 	@InjectView(R.id.pub_topic)
 	ImageButton ibPub;
-	private ResultGroup mResultGroup;
+	ResultGroup mResultGroup;
+	private ViewHolder viewHolder;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+
+		View v = LayoutInflater.from(this).inflate(R.layout.head_group, null);
+		viewHolder.imgOfficer = (ImageView) v.findViewById(R.id.officer);
+		viewHolder.tvJoined = (TextView) v.findViewById(R.id.tv_joined);
+		viewHolder.imgJoined = (ImageView) v.findViewById(R.id.img_joined);
+		mListView.addHeaderView(v);
 		mListView.setAdapter(new TopicAdapter(this));
 		mListView.setOnItemClickListener(this);
 		ibPub.setOnClickListener(this);
@@ -39,7 +49,6 @@ public class GroupSpace extends Base implements OnClickListener,
 					@Override
 					public void onSuccess(Object object) {
 						mResultGroup = (ResultGroup) object;
-
 					}
 
 					@Override
@@ -48,10 +57,6 @@ public class GroupSpace extends Base implements OnClickListener,
 					}
 
 				});
-	}
-
-	private void getData() {
-
 	}
 
 	@Override
@@ -71,5 +76,17 @@ public class GroupSpace extends Base implements OnClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		UIHelper.toTopicDetail(GroupSpace.this, null);
+	}
+
+	class ViewHolder {
+
+		TextView tvName;
+		TextView tvMessage;
+		TextView tvUserAmount;
+		TextView tvPicAmount;
+		TextView tvJoined;
+		ImageView imgOfficer;
+		ImageView imgJoined;
+
 	}
 }
