@@ -20,6 +20,19 @@ public class UserSpace extends Base implements OnClickListener {
 	TextView tvNickName;
 	@InjectView(R.id.layout_fans)
 	LinearLayout layoutFans;
+	@InjectView(R.id.layout_attent)
+	LinearLayout layoutAttent;
+	@InjectView(R.id.layout_collect)
+	LinearLayout layoutCollect;
+	@InjectView(R.id.layout_group)
+	LinearLayout layoutGroup;
+
+	TextView tvAttentAmount;
+	TextView tvBeAttentAmount;
+	TextView tvJoinGroupAmount;
+	TextView tvNoteAmount;
+	TextView tvRelation;
+	TextView tvTopicAmount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +66,12 @@ public class UserSpace extends Base implements OnClickListener {
 		case R.id.layout_fans:
 			UIHelper.toFans(UserSpace.this, null);
 			break;
-
+		case R.id.layout_attent:
+			break;
+		case R.id.layout_collect:
+			break;
+		case R.id.layout_group:
+			break;
 		default:
 			break;
 		}

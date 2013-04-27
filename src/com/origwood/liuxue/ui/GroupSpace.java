@@ -39,6 +39,8 @@ public class GroupSpace extends Base implements OnClickListener,
 		viewHolder.imgOfficer = (ImageView) v.findViewById(R.id.officer);
 		viewHolder.tvJoined = (TextView) v.findViewById(R.id.tv_joined);
 		viewHolder.imgJoined = (ImageView) v.findViewById(R.id.img_joined);
+		viewHolder.tvMessage = (TextView) v.findViewById(R.id.message);
+
 		mListView.addHeaderView(v);
 		mListView.setAdapter(new TopicAdapter(this));
 		mListView.setOnItemClickListener(this);

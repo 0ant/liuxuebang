@@ -186,6 +186,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:id="@+id/layout_group"
                 android:orientation="vertical" >
 
                 <TextView
@@ -211,6 +212,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:id="@+id/layout_attent"
                 android:orientation="vertical" >
 
                 <TextView
@@ -262,6 +264,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:id="@+id/layout_collect"
                 android:orientation="vertical" >
 
                 <TextView
