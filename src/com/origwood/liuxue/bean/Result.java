@@ -4,6 +4,15 @@ public class Result {
 	protected String msg;
 	protected int subResultType;
 
+	/**
+	 * @param string ÏûÏ¢
+	 */
+	public Result(String string) {
+		this.msg=string;
+	}
+	public Result() {
+	}
+
 	public String getMsg() {
 		return msg;
 	}

@@ -196,6 +196,8 @@ public class AppStart extends Base implements OnClickListener {
 			break;
 		case R.id.login:
 			UIHelper.toLogin(AppStart.this);
+			// Test.fadeLogin(service,this);
+			// startActivity(new Intent(AppStart.this,PerfectInfo.class));
 			break;
 
 		default:

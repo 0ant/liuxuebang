@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_actionbar"
+        android:gravity="center_vertical" >
+
+        <ImageButton
+            android:id="@+id/back"
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Widget.Liuxue.ActionBar.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="创建帮" />
+
+        <ImageButton
+            android:id="@+id/cg_submit"
+            style="@style/Widget.Liuxue.ActionBar.ImageButton"
+            android:layout_width="@dimen/actionbar_icon_weight"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_submit" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_item"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_guoup_name" />
+
+            <EditText
+                android:id="@+id/group_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/Widget.Liuxue.EditText"
+                android:hint="帮名称" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_item"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_guoup_edit" />
+
+            <EditText
+                android:id="@+id/group_descript"
+                android:layout_width="match_parent"
+                android:layout_height="100dip"
+                android:paddingTop="5dp"
+                style="@style/Widget.Liuxue.EditText"
+                android:gravity="top"
+                android:hint="说明" />
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setPhoto"
+            android:background="@drawable/bg_item"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="添加帮头像" />
+            <ImageView
+                android:id="@+id/group_photo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/ic_pub_photo" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>
