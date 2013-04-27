@@ -51,6 +51,12 @@ public class AppService {
 		client.cancelRequests(context, b);
 	}
 
+	/**密码修改
+	 * @param newPwd
+	 * @param oldPwd
+	 * @param a
+	 * @param context
+	 */
 	public void modifyPwd(String newPwd, String oldPwd,
 			final AppServiceOnFinished a, final Context context) {
 		RequestParams params = new RequestParams();
@@ -242,6 +248,15 @@ public class AppService {
 				});
 	}
 
+	/**更新个人资料
+	 * @param usericon
+	 * @param sex
+	 * @param nickname
+	 * @param stage
+	 * @param phone
+	 * @param onFinished
+	 * @param context
+	 */
 	public void subInfoSetting(File usericon, String sex, String nickname,
 			String stage, String phone, final AppServiceOnFinished onFinished,
 			final Context context) {
@@ -281,6 +296,10 @@ public class AppService {
 		});
 	}
 
+	/**获取所有留学阶段
+	 * @param context
+	 * @param onFinished
+	 */
 	public void getUserAllStage(final Context context,
 			final AbsAppServiceOnFinished onFinished) {
 		final Result result = new Result();
@@ -321,6 +340,12 @@ public class AppService {
 		});
 	}
 
+	/**创建帮
+	 * @param name
+	 * @param descript
+	 * @param file
+	 * @param OnFinished
+	 */
 	public void subCreateGroupApply(String name, String descript, File file,
 			final AbsAppServiceOnFinished OnFinished) {
 		RequestParams params=new RequestParams();
@@ -331,18 +356,37 @@ public class AppService {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		client.post(URLs.CHECKISREGISTER, params, new AsyncHttpResponseHandler(){
+		Log.i(DUG_TAG, URLs.SUBCREATEGROUPAPPLY);
+		client.post(URLs.SUBCREATEGROUPAPPLY, params, new AsyncHttpResponseHandler(){
 
 			@Override
 			public void onFailure(Throwable arg0, String content) {
 				Log.e(DUG_TAG, arg0+content);
-				Result result=Json2Bean.getResult(content);
+				Result result=new Result();result.setMsg("连接异常");
 				OnFinished.onFailed(result);
 			}
 
 			@Override
 			public void onSuccess(int arg0, String content) {
-				OnFinished.onSuccess("创建成功");
+				Log.i(DUG_TAG, arg0+content);
+				if(arg0!=200){
+					OnFinished.onFailed(new Result("网络错误，保存失败"));
+				}
+				try {
+					JSONObject jsonObject=new JSONObject(content);
+					int subResultType=jsonObject.getInt("subResultType");
+					if(subResultType==1){
+						OnFinished.onFailed(new Result("保存成功"));
+						return;
+					}
+					JSONObject errorMap=jsonObject.getJSONObject("errorMap");
+					String msg=errorMap.getString("msg");
+					OnFinished.onFailed(new Result(msg));
+				} catch (JSONException e) {
+					Log.e(DUG_TAG, "返回到json格式错误");
+					e.printStackTrace();
+				}
+//				OnFinished.onSuccess(result);
 			}
 			
 		});
